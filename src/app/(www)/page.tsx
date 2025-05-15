@@ -1,9 +1,9 @@
 import type React from "react"
 
+import { SiNpm } from "@icons-pack/react-simple-icons"
 import Link from "next/link"
 import Balancer from "react-wrap-balancer"
 
-import { NPMIcon } from "@/components/icons/npm"
 import { Card, CardContent } from "@/components/ui/card"
 import { client } from "@/lib/client"
 
@@ -16,7 +16,7 @@ export default async function Page() {
   return (
     <main className="grid min-h-screen place-items-center">
       <div className="container flex flex-col items-center gap-3 py-16">
-        <NPMIcon className="h-12 w-12" />
+        <SiNpm className="h-12 w-12" />
 
         <h1 className="text-center text-3xl font-bold">NPM Package Explorer</h1>
 
@@ -38,7 +38,7 @@ export default async function Page() {
                       <Link
                         key={pkg}
                         href={`/package/${pkg}`}
-                        className="text-foreground hover:underline"
+                        className="text-foreground underline-offset-1.5 decoration-dotted hover:underline"
                       >
                         {pkg}
                       </Link>
