@@ -5,6 +5,7 @@ import type React from "react"
 import { useQuery } from "@tanstack/react-query"
 import { Search } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import Balancer from "react-wrap-balancer"
 
@@ -14,10 +15,16 @@ import { Input } from "@/components/ui/input"
 import { client } from "@/lib/client"
 
 export default function Page() {
+  const router = useRouter()
+
   const [inputValue, setInputValue] = useState<string>("")
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    if (inputValue) {
+      router.push(`/package/${inputValue}`)
+    }
   }
 
   const { data: popular, isPending } = useQuery({
