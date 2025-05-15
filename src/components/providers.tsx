@@ -4,6 +4,7 @@ import type { PropsWithChildren } from "react"
 
 import { QueryCache, QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { HTTPException } from "hono/http-exception"
+import { ThemeProvider } from "next-themes"
 import { useState } from "react"
 import { Provider as WrapBalancerProvider } from "react-wrap-balancer"
 
@@ -25,8 +26,10 @@ export const Providers = ({ children }: PropsWithChildren) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <WrapBalancerProvider>{children}</WrapBalancerProvider>
-      <Toaster />
+      <ThemeProvider attribute="class" defaultTheme="system">
+        <WrapBalancerProvider>{children}</WrapBalancerProvider>
+        <Toaster />
+      </ThemeProvider>
     </QueryClientProvider>
   )
 }

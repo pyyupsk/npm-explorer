@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 
+import { sans, mono } from "@/app/fonts"
 import { Providers } from "@/components/providers"
-import { sans, mono } from "@/styles/fonts"
-import "@/styles/globals.css"
+import "@/assets/css/base.css"
 
 export const metadata: Metadata = {
   title: "JStack App",
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${sans.variable} ${mono.variable}`}>
         <Providers>{children}</Providers>
       </body>
