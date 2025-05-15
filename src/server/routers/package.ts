@@ -13,7 +13,6 @@ export const packageRouter = j.router({
         headers: {
           Accept: "application/json",
         },
-        // Cache the response for 1 hour
         next: { revalidate: 3600 },
       })
 
@@ -35,7 +34,6 @@ export const packageRouter = j.router({
       const response = await fetch(
         "https://gist.githubusercontent.com/anvaka/8e8fa57c7ee1350e3491/raw/b6f3ebeb34c53775eea00b489a0cea2edd9ee49c/01.most-dependent-upon.md",
         {
-          // Cache the response for 1 hour
           next: { revalidate: 3600 },
         },
       )
@@ -48,7 +46,7 @@ export const packageRouter = j.router({
 
       const top3 = [...text.matchAll(/^\d+\. \[(.+?)\]\(.+?\) - \d+/gm)]
         .slice(0, 3)
-        .map((match) => match[1]) // Extract package name
+        .map((match) => match[1])
 
       return c.superjson(top3)
     } catch (error) {

@@ -1,5 +1,6 @@
 import { client } from "@/lib/client"
 
+import { DownloadStatistics } from "./_components/download-statistics"
 import { MetadataCard } from "./_components/metadata-card"
 
 export default async function Page({ params }: { params: Promise<{ pkg: string }> }) {
@@ -9,8 +10,9 @@ export default async function Page({ params }: { params: Promise<{ pkg: string }
   const metadata = await metadataRes.json()
 
   return (
-    <main className="container flex flex-col gap-3 py-9">
+    <main className="container flex flex-col gap-6 py-9">
       <MetadataCard metadata={metadata} />
+      <DownloadStatistics pkg={pkg} />
     </main>
   )
 }

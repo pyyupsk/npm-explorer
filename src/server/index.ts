@@ -3,6 +3,7 @@ import type { InferRouterInputs, InferRouterOutputs } from "jstack"
 import { cors } from "hono/cors"
 
 import { j } from "./jstack"
+import { downloadsRouter } from "./routers/downloads"
 import { packageRouter } from "./routers/package"
 
 /**
@@ -29,6 +30,7 @@ const api = j
  * All routers in /server/routers should be added here manually.
  */
 const appRouter = j.mergeRouters(api, {
+  downloads: downloadsRouter,
   package: packageRouter,
 })
 
