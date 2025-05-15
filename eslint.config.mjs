@@ -11,8 +11,7 @@ const compat = new FlatCompat({
 
 const eslintConfig = tseslint.config(
   ...compat.config({
-    extends: ["next/core-web-vitals", "next/typescript", "plugin:drizzle/recommended"],
-    plugins: ["drizzle"],
+    extends: ["next/core-web-vitals", "next/typescript"],
   }),
   eslint.configs.recommended,
   {
