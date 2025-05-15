@@ -1,6 +1,35 @@
+import { z } from "zod"
+
+import type { PackageMetadata } from "@/server/types/package/metadata"
+
 import { j, publicProcedure } from "@/server/jstack"
 
 export const packageRouter = j.router({
+  metadata: publicProcedure.input(z.object({ name: z.string() })).query(async ({ c, input }) => {
+    const pkg = input.name
+
+    try {
+      const response = await fetch(`https://registry.npmjs.org/${pkg}`, {
+        headers: {
+          Accept: "application/json",
+        },
+        // Cache the response for 1 hour
+        next: { revalidate: 3600 },
+      })
+
+      if (!response.ok) {
+        throw new Error(`Package ${pkg} not found`, { cause: response })
+      }
+
+      const data = (await response.json()) as PackageMetadata
+
+      return c.superjson(data)
+    } catch (error) {
+      console.error(`Error fetching package ${pkg}:`, error)
+      throw new Error("Failed to fetch package data", { cause: error })
+    }
+  }),
+
   popular: publicProcedure.query(async ({ c }) => {
     try {
       const response = await fetch(
