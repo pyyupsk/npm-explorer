@@ -1,7 +1,8 @@
-import { posts } from "@/server/db/schema"
-import { j, publicProcedure } from "@/server/jstack"
 import { desc } from "drizzle-orm"
 import { z } from "zod"
+
+import { posts } from "@/server/db/schema"
+import { j, publicProcedure } from "@/server/jstack"
 
 export const postRouter = j.router({
   recent: publicProcedure.query(async ({ c, ctx }) => {

@@ -2,11 +2,12 @@
 
 import type { PropsWithChildren } from "react"
 
-import { Toaster } from "@/components/ui/sonner"
 import { QueryCache, QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { HTTPException } from "hono/http-exception"
 import { useState } from "react"
 import { Provider as WrapBalancerProvider } from "react-wrap-balancer"
+
+import { Toaster } from "@/components/ui/sonner"
 
 export const Providers = ({ children }: PropsWithChildren) => {
   const [queryClient] = useState(

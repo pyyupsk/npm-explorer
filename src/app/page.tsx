@@ -1,5 +1,6 @@
-import { RecentPost } from "@/components/post"
 import Balancer from "react-wrap-balancer"
+
+import { RecentPost } from "@/components/post"
 
 export default function Page() {
   return (
