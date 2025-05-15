@@ -26,7 +26,7 @@ export default async function Page() {
           </Balancer>
         </p>
 
-        <Card className="mt-6">
+        <Card className="mt-6 w-full max-w-xl">
           <CardContent className="flex flex-col gap-4">
             <SearchForm popular={popular} />
 
