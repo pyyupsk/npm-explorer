@@ -1,6 +1,9 @@
+import type { InferRouterInputs, InferRouterOutputs } from "jstack"
+
 import { cors } from "hono/cors"
 
 import { j } from "./jstack"
+import { packageRouter } from "./routers/package"
 
 /**
  * This is your base API.
@@ -15,7 +18,7 @@ const api = j
     cors({
       allowHeaders: ["x-is-superjson", "content-type"],
       exposeHeaders: ["x-is-superjson"],
-      origin: "https://my-jstack.vercel.app",
+      origin: ["http://localhost:3000"],
       credentials: true,
     }),
   )
@@ -26,9 +29,11 @@ const api = j
  * All routers in /server/routers should be added here manually.
  */
 const appRouter = j.mergeRouters(api, {
-  // 👇 Add your routers here
+  package: packageRouter,
 })
 
 export type AppRouter = typeof appRouter
+export type InferInput = InferRouterInputs<AppRouter>
+export type InferOutput = InferRouterOutputs<AppRouter>
 
 export default appRouter
