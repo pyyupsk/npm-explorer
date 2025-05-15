@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "my-jstack",
+  "main": "src/server/index.ts",
+  "compatibility_date": "2025-04-10",
+  "observability": {
+    "enabled": true,
+  },
+  "placement": {
+    "mode": "smart",
+  },
+  "dev": {
+    "port": 8080,
+  },
+}
