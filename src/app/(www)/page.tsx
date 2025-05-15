@@ -1,39 +1,17 @@
-"use client"
-
 import type React from "react"
 
-import { useQuery } from "@tanstack/react-query"
-import { Search } from "lucide-react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
 import Balancer from "react-wrap-balancer"
 
 import { NPMIcon } from "@/components/icons/npm"
 import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { client } from "@/lib/client"
 
-export default function Page() {
-  const router = useRouter()
+import SearchForm from "./_components/search-form"
 
-  const [inputValue, setInputValue] = useState<string>("")
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    if (inputValue) {
-      router.push(`/package/${inputValue}`)
-    }
-  }
-
-  const { data: popular, isPending } = useQuery({
-    queryKey: ["get-recent-post"],
-    queryFn: async () => {
-      const res = await client.package.popular.$get()
-      return await res.json()
-    },
-  })
+export default async function Page() {
+  const res = await client.package.popular.$get()
+  const popular = await res.json()
 
   return (
     <main className="grid min-h-screen place-items-center">
@@ -50,38 +28,23 @@ export default function Page() {
 
         <Card className="mt-6">
           <CardContent className="flex flex-col gap-4">
-            <form onSubmit={handleSubmit} className="flex w-xl gap-2">
-              <div className="relative flex-1">
-                <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-                <Input
-                  type="text"
-                  placeholder={`Search for an npm packages (e.g. ${popular ? popular.join(", ") : "geothai"})...`}
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  className="pl-10"
-                  aria-label="Package name"
-                />
-              </div>
-            </form>
+            <SearchForm popular={popular} />
+
             <p className="text-muted-foreground text-center text-sm">
               Popular packages:{" "}
-              {isPending ? (
-                "Loading..."
-              ) : (
-                <span className="inline-flex flex-wrap gap-1.5">
-                  {popular
-                    ? popular.map((pkg) => (
-                        <Link
-                          key={pkg}
-                          href={`/package/${pkg}`}
-                          className="text-foreground hover:underline"
-                        >
-                          {pkg}
-                        </Link>
-                      ))
-                    : "No popular packages"}
-                </span>
-              )}
+              <span className="inline-flex flex-wrap gap-1.5">
+                {popular
+                  ? popular.map((pkg) => (
+                      <Link
+                        key={pkg}
+                        href={`/package/${pkg}`}
+                        className="text-foreground hover:underline"
+                      >
+                        {pkg}
+                      </Link>
+                    ))
+                  : "No popular packages"}
+              </span>
             </p>
           </CardContent>
         </Card>
