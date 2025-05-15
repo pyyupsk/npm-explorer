@@ -10,7 +10,7 @@ type Props = {
   popular: (string | undefined)[] | undefined
 }
 
-export default function SearchForm(props: Props) {
+export default function SearchForm({ popular }: Props) {
   const [inputValue, setInputValue] = useState("")
   const router = useRouter()
 
@@ -28,8 +28,8 @@ export default function SearchForm(props: Props) {
         <Input
           type="text"
           placeholder={
-            props.popular
-              ? `Search for an npm package (e.g. ${props.popular ? props.popular.join(", ") : "geothai"})...`
+            popular
+              ? `Search for an npm package (e.g. ${popular ? popular.join(", ") : "geothai"})...`
               : "Search for an npm package..."
           }
           value={inputValue}
