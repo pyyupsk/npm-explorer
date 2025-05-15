@@ -17,7 +17,7 @@ export const packageRouter = j.router({
       })
 
       if (!response.ok) {
-        throw new Error(`Package ${pkg} not found`, { cause: response })
+        return c.superjson({} as PackageMetadata)
       }
 
       const data = (await response.json()) as PackageMetadata
@@ -39,7 +39,7 @@ export const packageRouter = j.router({
       )
 
       if (!response.ok) {
-        throw new Error("Failed to fetch popular packages", { cause: response })
+        return c.superjson(["react", "vue", "angular"])
       }
 
       const text = await response.text()
