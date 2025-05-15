@@ -28,12 +28,14 @@ export function DownloadsChart({ data, period }: DownloadsChartProps) {
   const formatDate = (dateString: string, period: string) => {
     const date = new Date(dateString)
 
-    if (period === "last-week") {
-      return date.toLocaleDateString("en-US", { weekday: "short" })
+    if (period === "last-day") {
+      return date.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric" })
+    } else if (period === "last-week") {
+      return date.toLocaleDateString("en-US", { weekday: "long" })
     } else if (period === "last-month") {
+      return date.toLocaleDateString("en-US", { month: "long", day: "numeric" })
+    } else if (period === "last-year") {
       return date.toLocaleDateString("en-US", { month: "short", day: "numeric" })
-    } else {
-      return date.toLocaleDateString("en-US", { month: "short", year: "numeric" })
     }
   }
 
