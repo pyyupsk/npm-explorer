@@ -1,6 +1,9 @@
 import { SiNpm } from "@icons-pack/react-simple-icons"
 import Link from "next/link"
 
+import { ThemeSwitcher } from "@/components/theme-switcher"
+import { Separator } from "@/components/ui/separator"
+
 import SearchForm from "./search-form"
 
 export function Header() {
@@ -13,6 +16,8 @@ export function Header() {
         </Link>
         <div className="flex items-center space-x-3">
           <SearchForm popular={undefined} />
+          <Separator orientation="vertical" className="min-h-6" />
+          <ThemeSwitcher />
         </div>
       </div>
     </header>
