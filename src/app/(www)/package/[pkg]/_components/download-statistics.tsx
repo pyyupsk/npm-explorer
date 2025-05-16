@@ -3,8 +3,15 @@
 import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 
+import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Tabs, TabsContent } from "@/components/ui/tabs"
 import { client } from "@/lib/client"
 
 import { DownloadsChart } from "./downloads-chart"
@@ -32,16 +39,22 @@ export function DownloadStatistics({ pkg }: { pkg: string }) {
   return (
     <Card>
       <CardContent>
-        <h2 className="mb-4 text-xl font-semibold">Download Statistics</h2>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button size="sm" className="mb-3">
+              Change Period
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            {["last-day", "last-week", "last-month", "last-year"].map((item) => (
+              <DropdownMenuItem key={item} onClick={() => handlePeriodChange(item)}>
+                {item}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
 
-        <Tabs defaultValue={period} onValueChange={handlePeriodChange}>
-          <TabsList className="mb-4">
-            <TabsTrigger value="last-day">Last Day</TabsTrigger>
-            <TabsTrigger value="last-week">Last Week</TabsTrigger>
-            <TabsTrigger value="last-month">Last Month</TabsTrigger>
-            <TabsTrigger value="last-year">Last Year</TabsTrigger>
-          </TabsList>
-
+        <Tabs defaultValue={period} value={period}>
           <TabsContent value={period} className="mt-0">
             {isPending ? (
               <div className="flex h-[348px] items-center justify-center">

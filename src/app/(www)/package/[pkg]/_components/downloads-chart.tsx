@@ -106,9 +106,9 @@ export function DownloadsChart({ data, period }: DownloadsChartProps) {
 
   return (
     <div>
-      <div className="mb-4 flex items-center justify-between">
+      <div className="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-center">
         <h3 className="text-lg font-medium">Downloads: {data.package}</h3>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between gap-3 md:justify-end">
           <div className="text-muted-foreground text-sm">
             Total: <span className="font-medium">{totalDownloads.toLocaleString()}</span>
           </div>

@@ -27,7 +27,7 @@ export function MetadataCard({ metadata }: MetadataCardProps) {
   return (
     <Card>
       <CardContent>
-        <div className="mb-3 flex items-start justify-between">
+        <div className="mb-3 flex flex-col items-start justify-between gap-3 md:flex-row">
           <div className="flex items-center gap-3">
             <h3 className="text-2xl font-bold">{metadata.name}</h3>
             <Badge>v{latestVersion}</Badge>

@@ -278,7 +278,7 @@ export async function GET(request: NextRequest) {
                 margin: "0",
               }}
             >
-              NPM Package Explorer
+              NPM Explorer
             </p>
             <p
               style={{
@@ -346,7 +346,7 @@ export async function GET(request: NextRequest) {
                 marginBottom: "24px",
               }}
             >
-              NPM Package Explorer
+              NPM Explorer
             </h1>
             <p
               style={{

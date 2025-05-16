@@ -20,7 +20,7 @@ export default async function Page() {
         {/* TODO: Use logos after getting permission from npm */}
         {/* <SiNpm className="h-12 w-12" /> */}
 
-        <h1 className="text-center text-3xl font-bold">NPM Package Explorer</h1>
+        <h1 className="text-center text-3xl font-bold">NPM Explorer</h1>
 
         <p className="text-muted-foreground text-center">
           <Balancer>

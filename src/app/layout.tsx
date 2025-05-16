@@ -7,8 +7,8 @@ import { commonMetadata } from "@/lib/metadata"
 
 export const metadata: Metadata = commonMetadata({
   title: {
-    default: "NPM Package Explorer",
-    template: "%s | NPM Package Explorer",
+    default: "NPM Explorer",
+    template: "%s | NPM Explorer",
   },
   description: "Explore npm package metadata and download statistics",
   image: "/api/og/default",

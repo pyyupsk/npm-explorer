@@ -56,7 +56,7 @@ export async function GET() {
                   marginLeft: "24px",
                 }}
               >
-                NPM Package Explorer
+                NPM Explorer
               </h1>
             </div>
             <p
