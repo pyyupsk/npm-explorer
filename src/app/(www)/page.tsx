@@ -29,7 +29,7 @@ export default async function Page() {
         </p>
 
         <Card className="mt-6 w-full max-w-xl">
-          <CardContent className="flex flex-col gap-4">
+          <CardContent className="flex flex-col gap-6">
             <SearchForm popular={popular} />
 
             <p className="text-muted-foreground text-center text-sm">

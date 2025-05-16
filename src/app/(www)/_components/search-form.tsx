@@ -22,7 +22,7 @@ export default function SearchForm({ popular }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex w-full gap-2">
+    <form onSubmit={handleSubmit}>
       <div className="relative flex-1">
         <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
         <Input
@@ -34,7 +34,7 @@ export default function SearchForm({ popular }: Props) {
           }
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          className="pl-10"
+          className="pl-9"
           aria-label="Package name"
         />
       </div>

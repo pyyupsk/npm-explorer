@@ -12,20 +12,20 @@ export function Footer() {
             href="https://github.com/pyyupsk"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground underline decoration-dotted underline-offset-3"
+            className="hover:text-foreground underline decoration-dotted underline-offset-3 transition-colors duration-200"
           >
             @pyyupsk
           </Link>
         </p>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           {socials.map((social) => (
             <Link
               key={social.name}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
             >
               <social.icon className="h-4 w-4" />
             </Link>

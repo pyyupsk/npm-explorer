@@ -56,7 +56,7 @@ export default async function Page({ params }: { params: Promise<{ pkg: string }
 
   if (!metadata || Object.keys(metadata).length === 0) {
     return (
-      <main className="container flex h-[calc(100vh-132px)] flex-col items-center justify-center gap-3 py-9 text-center">
+      <main className="container flex h-[calc(100vh-65px)] flex-col items-center justify-center gap-3 py-9 text-center">
         <h1 className="text-4xl font-bold">Oops! Package not found</h1>
         <p className="text-muted-foreground">The package you are looking for does not exist.</p>
         <Link href="/" className={buttonVariants({ className: "mt-4" })}>
@@ -67,7 +67,7 @@ export default async function Page({ params }: { params: Promise<{ pkg: string }
   }
 
   return (
-    <main className="container flex flex-col gap-6 py-9">
+    <main className="container flex h-[calc(100vh-65px)] flex-col gap-6 py-9">
       <MetadataCard metadata={metadata} />
       <DownloadStatistics pkg={pkg} />
     </main>

@@ -108,24 +108,24 @@ export function DownloadsChart({ data, period }: DownloadsChartProps) {
     <div>
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-lg font-medium">Downloads: {data.package}</h3>
-        <div className="flex items-center gap-2">
-          <div className="text-muted-foreground mr-2 text-sm">
+        <div className="flex items-center gap-3">
+          <div className="text-muted-foreground text-sm">
             Total: <span className="font-medium">{totalDownloads.toLocaleString()}</span>
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm">
-                <Download className="mr-2 h-4 w-4" />
+                <Download className="h-4 w-4" />
                 Export
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={exportAsCSV}>
-                <FileSpreadsheet className="mr-2 h-4 w-4" />
+                <FileSpreadsheet className="h-4 w-4" />
                 Export as CSV
               </DropdownMenuItem>
               <DropdownMenuItem onClick={exportAsJSON}>
-                <FileJson className="mr-2 h-4 w-4" />
+                <FileJson className="h-4 w-4" />
                 Export as JSON
               </DropdownMenuItem>
             </DropdownMenuContent>

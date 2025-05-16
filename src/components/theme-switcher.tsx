@@ -21,7 +21,7 @@ export function ThemeSwitcher() {
         <button
           aria-label={`Use ${t} theme`}
           className={cn(
-            "inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium transition-colors",
+            "inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium transition-colors duration-200",
             "hover:text-foreground focus-visible:ring-ring focus-visible:ring-1 focus-visible:outline-none",
             theme === t && "text-foreground shadow-border shadow-[0_0_0_1px]",
           )}
