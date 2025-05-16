@@ -16,6 +16,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { formatNumber } from "@/utils/format-number"
 
 type DownloadsChartProps = {
   data: InferOutput["downloads"]["range"]
@@ -47,15 +48,6 @@ export function DownloadsChart({ data, period }: DownloadsChartProps) {
       downloads: item.downloads,
     }))
   }, [data, period])
-
-  const formatYAxis = (value: number) => {
-    if (value >= 1000000) {
-      return `${(value / 1000000).toFixed(1)}M`
-    } else if (value >= 1000) {
-      return `${(value / 1000).toFixed(1)}K`
-    }
-    return value.toString()
-  }
 
   const totalDownloads = useMemo(() => {
     if (!data || !data.downloads) return 0
@@ -152,7 +144,7 @@ export function DownloadsChart({ data, period }: DownloadsChartProps) {
         >
           <CartesianGrid vertical={false} />
           <XAxis dataKey="date" tickMargin={8} />
-          <YAxis tickFormatter={formatYAxis} />
+          <YAxis tickFormatter={formatNumber} />
           <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
           <Area
             dataKey="downloads"
