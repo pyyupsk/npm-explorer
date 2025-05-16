@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "#1b1b1b",
+              backgroundColor: "#121212",
               fontFamily: "Inter, sans-serif",
               padding: "40px",
             }}
@@ -43,7 +43,8 @@ export async function GET(request: NextRequest) {
                 textAlign: "center",
               }}
             >
-              <svg
+              {/* TODO: Use logos after getting permission from npm */}
+              {/* <svg
                 id="n"
                 xmlns="http://www.w3.org/2000/svg"
                 width="80"
@@ -52,12 +53,12 @@ export async function GET(request: NextRequest) {
               >
                 <path fill="#C12127" d="M0,16V0H16V16ZM3,3V13H8V5h3v8h2V3Z" />
                 <path fill="#FFFFFF" d="M3,3H13V13H11V5H8v8H3Z" />
-              </svg>
+              </svg> */}
               <h1
                 style={{
                   fontSize: "56px",
                   fontWeight: "bold",
-                  color: "#fcfcfc",
+                  color: "#ffffff",
                   marginBottom: "24px",
                 }}
               >
@@ -107,7 +108,7 @@ export async function GET(request: NextRequest) {
             width: "100%",
             display: "flex",
             flexDirection: "column",
-            backgroundColor: "#1b1b1b",
+            backgroundColor: "#121212",
             fontFamily: "Inter, sans-serif",
             padding: "40px",
           }}
@@ -119,24 +120,25 @@ export async function GET(request: NextRequest) {
               alignItems: "center",
             }}
           >
-            <svg
+            {/* TODO: Use logos after getting permission from npm */}
+            {/* <svg
               id="n"
               xmlns="http://www.w3.org/2000/svg"
               width="80"
               height="80"
               viewBox="0 0 16 16"
+              marginRight: "24px",
             >
               <path fill="#C12127" d="M0,16V0H16V16ZM3,3V13H8V5h3v8h2V3Z" />
               <path fill="#FFFFFF" d="M3,3H13V13H11V5H8v8H3Z" />
-            </svg>
+            </svg> */}
             <h1
               style={{
                 fontSize: "64px",
                 fontWeight: "bold",
-                background: "linear-gradient(to right, #fcfcfc, #a4a4a4)",
+                background: "linear-gradient(to right, #ffffff, #a4a4a4)",
                 backgroundClip: "text",
                 color: "transparent",
-                marginLeft: "24px",
               }}
             >
               {pkg}
@@ -147,7 +149,7 @@ export async function GET(request: NextRequest) {
           <p
             style={{
               fontSize: "32px",
-              color: "#fcfcfc",
+              color: "#ffffff",
               flex: "1",
             }}
           >
@@ -166,7 +168,7 @@ export async function GET(request: NextRequest) {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                backgroundColor: "#262626",
+                backgroundColor: "#1f1f1f",
                 borderRadius: "8px",
                 padding: "16px 24px",
                 flex: "1",
@@ -184,7 +186,7 @@ export async function GET(request: NextRequest) {
               <p
                 style={{
                   fontSize: "32px",
-                  color: "#fcfcfc",
+                  color: "#ffffff",
                   margin: "0",
                   fontWeight: "bold",
                 }}
@@ -198,7 +200,7 @@ export async function GET(request: NextRequest) {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                backgroundColor: "#262626",
+                backgroundColor: "#1f1f1f",
                 borderRadius: "8px",
                 padding: "16px 24px",
                 flex: "1",
@@ -216,7 +218,7 @@ export async function GET(request: NextRequest) {
               <p
                 style={{
                   fontSize: "32px",
-                  color: "#fcfcfc",
+                  color: "#ffffff",
                   margin: "0",
                   fontWeight: "bold",
                 }}
@@ -230,7 +232,7 @@ export async function GET(request: NextRequest) {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                backgroundColor: "#262626",
+                backgroundColor: "#1f1f1f",
                 borderRadius: "8px",
                 padding: "16px 24px",
                 flex: "1",
@@ -248,7 +250,7 @@ export async function GET(request: NextRequest) {
               <p
                 style={{
                   fontSize: "32px",
-                  color: "#fcfcfc",
+                  color: "#ffffff",
                   margin: "0",
                   fontWeight: "bold",
                 }}
@@ -270,7 +272,7 @@ export async function GET(request: NextRequest) {
             <p
               style={{
                 fontSize: "24px",
-                background: "linear-gradient(to right, #fcfcfc, #a4a4a4)",
+                background: "linear-gradient(to right, #ffffff, #a4a4a4)",
                 backgroundClip: "text",
                 color: "transparent",
                 margin: "0",
@@ -309,7 +311,7 @@ export async function GET(request: NextRequest) {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "#1b1b1b",
+            backgroundColor: "#121212",
             fontFamily: "Inter, sans-serif",
             padding: "40px",
           }}
@@ -323,7 +325,8 @@ export async function GET(request: NextRequest) {
               textAlign: "center",
             }}
           >
-            <svg
+            {/* TODO: Use logos after getting permission from npm */}
+            {/* <svg
               id="n"
               xmlns="http://www.w3.org/2000/svg"
               width="80"
@@ -332,12 +335,12 @@ export async function GET(request: NextRequest) {
             >
               <path fill="#C12127" d="M0,16V0H16V16ZM3,3V13H8V5h3v8h2V3Z" />
               <path fill="#FFFFFF" d="M3,3H13V13H11V5H8v8H3Z" />
-            </svg>
+            </svg> */}
             <h1
               style={{
                 fontSize: "56px",
                 fontWeight: "bold",
-                background: "linear-gradient(to right, #fcfcfc, #a4a4a4)",
+                background: "linear-gradient(to right, #ffffff, #a4a4a4)",
                 backgroundClip: "text",
                 color: "transparent",
                 marginBottom: "24px",

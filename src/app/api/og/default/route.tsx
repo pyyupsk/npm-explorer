@@ -14,7 +14,7 @@ export async function GET() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "#1b1b1b",
+            backgroundColor: "#121212",
             fontFamily: "Inter, sans-serif",
             padding: "40px",
           }}
@@ -35,7 +35,8 @@ export async function GET() {
                 marginBottom: "24px",
               }}
             >
-              <svg
+              {/* TODO: Use logos after getting permission from npm */}
+              {/* <svg
                 id="n"
                 xmlns="http://www.w3.org/2000/svg"
                 width="80"
@@ -44,12 +45,12 @@ export async function GET() {
               >
                 <path fill="#C12127" d="M0,16V0H16V16ZM3,3V13H8V5h3v8h2V3Z" />
                 <path fill="#FFFFFF" d="M3,3H13V13H11V5H8v8H3Z" />
-              </svg>
+              </svg> */}
               <h1
                 style={{
                   fontSize: "64px",
                   fontWeight: "bold",
-                  background: "linear-gradient(to right, #fcfcfc, #a4a4a4)",
+                  background: "linear-gradient(to right, #ffffff, #a4a4a4)",
                   backgroundClip: "text",
                   color: "transparent",
                   marginLeft: "24px",
@@ -73,9 +74,9 @@ export async function GET() {
                 display: "flex",
                 marginTop: "48px",
                 padding: "12px 24px",
-                backgroundColor: "#262626",
+                backgroundColor: "#1f1f1f",
                 borderRadius: "8px",
-                color: "#fcfcfc",
+                color: "#ffffff",
                 fontSize: "24px",
               }}
             >

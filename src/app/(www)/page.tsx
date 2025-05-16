@@ -1,6 +1,7 @@
 import type React from "react"
 
-import { SiNpm } from "@icons-pack/react-simple-icons"
+// TODO: Use logos after getting permission from npm
+// import { SiNpm } from "@icons-pack/react-simple-icons"
 import Link from "next/link"
 import Balancer from "react-wrap-balancer"
 
@@ -16,7 +17,8 @@ export default async function Page() {
   return (
     <main className="grid min-h-screen place-items-center">
       <div className="container flex flex-col items-center gap-3 py-16">
-        <SiNpm className="h-12 w-12" />
+        {/* TODO: Use logos after getting permission from npm */}
+        {/* <SiNpm className="h-12 w-12" /> */}
 
         <h1 className="text-center text-3xl font-bold">NPM Package Explorer</h1>
 
