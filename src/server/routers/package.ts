@@ -39,7 +39,7 @@ export const packageRouter = j.router({
       )
 
       if (!response.ok) {
-        return c.superjson(["react", "vue", "angular"])
+        return c.superjson(["lodash", "chalk", "request"])
       }
 
       const text = await response.text()
