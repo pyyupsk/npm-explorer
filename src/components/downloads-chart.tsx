@@ -5,7 +5,9 @@ import { useMemo } from "react"
 import { XAxis, CartesianGrid, AreaChart, Area, YAxis } from "recharts"
 
 import type { ChartConfig } from "@/components/ui/chart"
+import type { DownloadPeriod } from "@/hooks/use-downloads"
 import type { InferOutput } from "@/server"
+import type { ExportData } from "@/utils/export"
 
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -16,6 +18,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { CHART_MARGIN } from "@/constants/downloads"
+import { calculateTotalDownloads, prepareChartData } from "@/utils/chart"
+import { exportAsCSV, exportAsJSON } from "@/utils/export"
 import { formatNumber } from "@/utils/format-number"
 
 type DownloadsChartProps = {
@@ -26,75 +31,8 @@ type DownloadsChartProps = {
 const chartConfig = {} satisfies ChartConfig
 
 export function DownloadsChart({ data, period }: DownloadsChartProps) {
-  const formatDate = (dateString: string, period: string) => {
-    const date = new Date(dateString)
-
-    if (period === "last-day") {
-      return date.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric" })
-    } else if (period === "last-week") {
-      return date.toLocaleDateString("en-US", { weekday: "long" })
-    } else if (period === "last-month") {
-      return date.toLocaleDateString("en-US", { month: "long", day: "numeric" })
-    } else if (period === "last-year") {
-      return date.toLocaleDateString("en-US", { month: "short", day: "numeric" })
-    }
-  }
-
-  const chartData = useMemo(() => {
-    if (!data || !data.downloads) return []
-
-    return data.downloads.map((item) => ({
-      date: formatDate(item.day, period),
-      downloads: item.downloads,
-    }))
-  }, [data, period])
-
-  const totalDownloads = useMemo(() => {
-    if (!data || !data.downloads) return 0
-    return data.downloads.reduce((sum: number, item) => sum + item.downloads, 0)
-  }, [data])
-
-  const exportAsCSV = () => {
-    if (!data || !data.downloads) return
-
-    let csv = "Date,Downloads\n"
-
-    data.downloads.forEach((item) => {
-      csv += `${item.day},${item.downloads}\n`
-    })
-
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" })
-    const url = URL.createObjectURL(blob)
-    const link = document.createElement("a")
-    link.setAttribute("href", url)
-    link.setAttribute("download", `${data.package}-${period}-downloads.csv`)
-    link.style.visibility = "hidden"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
-
-  const exportAsJSON = () => {
-    if (!data || !data.downloads) return
-
-    const exportData = {
-      package: data.package,
-      period: period,
-      start: data.start,
-      end: data.end,
-      downloads: data.downloads,
-    }
-
-    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json" })
-    const url = URL.createObjectURL(blob)
-    const link = document.createElement("a")
-    link.setAttribute("href", url)
-    link.setAttribute("download", `${data.package}-${period}-downloads.json`)
-    link.style.visibility = "hidden"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
+  const chartData = useMemo(() => prepareChartData(data, period as DownloadPeriod), [data, period])
+  const totalDownloads = useMemo(() => calculateTotalDownloads(data?.downloads), [data])
 
   if (!data || !data.downloads || data.downloads.length === 0) {
     return (
@@ -102,6 +40,14 @@ export function DownloadsChart({ data, period }: DownloadsChartProps) {
         <p className="text-muted-foreground text-center">No download data available</p>
       </Card>
     )
+  }
+
+  const formatData: ExportData = {
+    package: data.package,
+    period: period,
+    start: data.start,
+    end: data.end,
+    downloads: data.downloads,
   }
 
   return (
@@ -120,11 +66,11 @@ export function DownloadsChart({ data, period }: DownloadsChartProps) {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={exportAsCSV}>
+              <DropdownMenuItem onClick={() => exportAsCSV(formatData)}>
                 <FileSpreadsheet className="h-4 w-4" />
                 Export as CSV
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={exportAsJSON}>
+              <DropdownMenuItem onClick={() => exportAsJSON(formatData)}>
                 <FileJson className="h-4 w-4" />
                 Export as JSON
               </DropdownMenuItem>
@@ -134,14 +80,7 @@ export function DownloadsChart({ data, period }: DownloadsChartProps) {
       </div>
 
       <ChartContainer config={chartConfig} className="h-[300px] w-full">
-        <AreaChart
-          accessibilityLayer
-          data={chartData}
-          margin={{
-            left: 12,
-            right: 12,
-          }}
-        >
+        <AreaChart accessibilityLayer data={chartData} margin={CHART_MARGIN}>
           <CartesianGrid vertical={false} />
           <XAxis dataKey="date" tickMargin={8} />
           <YAxis tickFormatter={formatNumber} />

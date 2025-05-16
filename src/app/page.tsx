@@ -5,10 +5,9 @@ import type React from "react"
 import Link from "next/link"
 import Balancer from "react-wrap-balancer"
 
+import SearchForm from "@/components/search-form"
 import { Card, CardContent } from "@/components/ui/card"
 import { client } from "@/lib/client"
-
-import SearchForm from "./_components/search-form"
 
 export default async function Page() {
   const res = await client.package.popular.$get()

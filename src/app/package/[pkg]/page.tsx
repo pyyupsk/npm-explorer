@@ -2,12 +2,11 @@ import type { Metadata } from "next"
 
 import Link from "next/link"
 
+import { DownloadStatistics } from "@/components/download-statistics"
+import { MetadataCard } from "@/components/metadata-card"
 import { buttonVariants } from "@/components/ui/button"
 import { client } from "@/lib/client"
 import { commonMetadata } from "@/lib/metadata"
-
-import { DownloadStatistics } from "./_components/download-statistics"
-import { MetadataCard } from "./_components/metadata-card"
 
 type PackagePageProps = {
   params: Promise<{

@@ -1,18 +1,18 @@
 import { z } from "zod"
 
+import type { DownloadPeriod } from "@/hooks/use-downloads"
 import type { DownloadsRange } from "@/server/types/downloads/range"
 
+import { DOWNLOAD_PERIODS } from "@/constants/downloads"
 import { j, publicProcedure } from "@/server/jstack"
-
-const validPeriods = ["last-day", "last-week", "last-month", "last-year"]
 
 export const downloadsRouter = j.router({
   range: publicProcedure
-    .input(z.object({ name: z.string(), period: z.string() }))
+    .input(z.object({ name: z.string(), period: z.custom<DownloadPeriod>() }))
     .query(async ({ c, input }) => {
       const { name, period } = input
 
-      if (!validPeriods.includes(period)) {
+      if (!DOWNLOAD_PERIODS.includes(period)) {
         throw new Error(`Invalid period: ${period}`)
       }
 

@@ -1,8 +1,5 @@
 "use client"
 
-import { useQuery } from "@tanstack/react-query"
-import { useState } from "react"
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -12,29 +9,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Tabs, TabsContent } from "@/components/ui/tabs"
-import { client } from "@/lib/client"
+import { DOWNLOAD_PERIODS } from "@/constants/downloads"
+import { useDownloads } from "@/hooks/use-downloads"
 
 import { DownloadsChart } from "./downloads-chart"
 
 export function DownloadStatistics({ pkg }: { pkg: string }) {
-  const [period, setPeriod] = useState<string>("last-day")
-
-  const {
-    data,
-    isPending,
-    refetch: handleRefetch,
-  } = useQuery({
-    queryKey: ["downloads", period, "data"],
-    queryFn: async () => {
-      const res = await client.downloads.range.$get({ name: pkg, period })
-      return await res.json()
-    },
-  })
-
-  function handlePeriodChange(value: string) {
-    setPeriod(value)
-    handleRefetch()
-  }
+  const { data, isPending, period, handlePeriodChange } = useDownloads(pkg)
 
   return (
     <Card>
@@ -46,7 +27,7 @@ export function DownloadStatistics({ pkg }: { pkg: string }) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            {["last-day", "last-week", "last-month", "last-year"].map((item) => (
+            {DOWNLOAD_PERIODS.map((item) => (
               <DropdownMenuItem key={item} onClick={() => handlePeriodChange(item)}>
                 {item}
               </DropdownMenuItem>

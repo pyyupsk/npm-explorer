@@ -1,9 +1,10 @@
+import "@/styles/css/base.css"
+
 import type { Metadata } from "next"
 
-import { sans, mono } from "@/app/fonts"
 import { Providers } from "@/components/providers"
-import "@/assets/css/base.css"
 import { commonMetadata } from "@/lib/metadata"
+import { sans, mono } from "@/styles/fonts"
 
 export const metadata: Metadata = commonMetadata({
   title: {
