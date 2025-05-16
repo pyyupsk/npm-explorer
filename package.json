@@ -1,5 +1,5 @@
 {
-  "name": "my-jstack",
+  "name": "npm-explorer",
   "version": "0.1.0",
   "private": true,
   "packageManager": "bun@1.2.13",
