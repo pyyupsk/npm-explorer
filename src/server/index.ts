@@ -1,4 +1,4 @@
-import type { InferRouterInputs, InferRouterOutputs } from "jstack"
+import type { InferRouterOutputs } from "jstack"
 
 import { cors } from "hono/cors"
 
@@ -37,7 +37,6 @@ const appRouter = j.mergeRouters(api, {
 })
 
 export type AppRouter = typeof appRouter
-export type InferInput = InferRouterInputs<AppRouter>
 export type InferOutput = InferRouterOutputs<AppRouter>
 
 export default appRouter

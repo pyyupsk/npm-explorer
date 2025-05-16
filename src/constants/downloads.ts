@@ -7,7 +7,6 @@ export const DOWNLOAD_PERIODS: DownloadPeriod[] = [
   "last-year",
 ]
 
-export const CHART_HEIGHT = 300
 export const CHART_MARGIN = {
   left: 12,
   right: 12,
