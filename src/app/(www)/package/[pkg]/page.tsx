@@ -1,10 +1,52 @@
+import type { Metadata } from "next"
+
 import Link from "next/link"
 
 import { buttonVariants } from "@/components/ui/button"
 import { client } from "@/lib/client"
+import { commonMetadata } from "@/lib/metadata"
 
 import { DownloadStatistics } from "./_components/download-statistics"
 import { MetadataCard } from "./_components/metadata-card"
+
+type PackagePageProps = {
+  params: Promise<{
+    pkg: string
+  }>
+}
+
+export async function generateMetadata({ params }: PackagePageProps): Promise<Metadata> {
+  const { pkg } = await params
+
+  const DEFAULT_TITLE = `${pkg} | NPM Package Explorer`
+  const DEFAULT_DESCRIPTION = `Explore ${pkg} npm package statistics and metadata`
+
+  try {
+    const metadataRes = await client.package.metadata.$get({ name: pkg })
+    const metadata = await metadataRes.json()
+
+    if (!metadata || Object.keys(metadata).length === 0) {
+      return {
+        title: DEFAULT_TITLE,
+        description: DEFAULT_DESCRIPTION,
+      }
+    }
+
+    const description = metadata.description || DEFAULT_DESCRIPTION
+
+    return commonMetadata({
+      title: pkg,
+      description: description,
+      image: `/api/og/pkg?q=${pkg}`,
+    })
+  } catch (error) {
+    console.error(`Error generating metadata for ${pkg}:`, error)
+    return {
+      title: DEFAULT_TITLE,
+      description: DEFAULT_DESCRIPTION,
+    }
+  }
+}
 
 export default async function Page({ params }: { params: Promise<{ pkg: string }> }) {
   const { pkg } = await params

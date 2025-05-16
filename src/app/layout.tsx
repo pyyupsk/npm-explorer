@@ -3,12 +3,16 @@ import type { Metadata } from "next"
 import { sans, mono } from "@/app/fonts"
 import { Providers } from "@/components/providers"
 import "@/assets/css/base.css"
+import { commonMetadata } from "@/lib/metadata"
 
-export const metadata: Metadata = {
-  title: "JStack App",
-  description: "Created using JStack",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
-}
+export const metadata: Metadata = commonMetadata({
+  title: {
+    default: "NPM Package Explorer",
+    template: "%s | NPM Package Explorer",
+  },
+  description: "Explore npm package metadata and download statistics",
+  image: "/api/og/default",
+})
 
 export default function RootLayout({
   children,

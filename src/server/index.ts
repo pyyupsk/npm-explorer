@@ -2,6 +2,8 @@ import type { InferRouterInputs, InferRouterOutputs } from "jstack"
 
 import { cors } from "hono/cors"
 
+import { BASE_URL } from "@/constants/domain"
+
 import { j } from "./jstack"
 import { downloadsRouter } from "./routers/downloads"
 import { packageRouter } from "./routers/package"
@@ -19,7 +21,7 @@ const api = j
     cors({
       allowHeaders: ["x-is-superjson", "content-type"],
       exposeHeaders: ["x-is-superjson"],
-      origin: ["http://localhost:3000"],
+      origin: ["http://localhost:3000", BASE_URL],
       credentials: true,
     }),
   )
