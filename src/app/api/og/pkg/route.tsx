@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "#121212",
+              backgroundColor: "#1b1b1b",
               fontFamily: "Inter, sans-serif",
               padding: "40px",
             }}
@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
                 style={{
                   fontSize: "56px",
                   fontWeight: "bold",
-                  color: "#ffffff",
+                  color: "#dbdbdb",
                   marginBottom: "24px",
                 }}
               >
@@ -67,7 +67,7 @@ export async function GET(request: NextRequest) {
               <p
                 style={{
                   fontSize: "32px",
-                  color: "#a4a4a4",
+                  color: "#808080",
                   maxWidth: "800px",
                   margin: "0",
                 }}
@@ -108,7 +108,7 @@ export async function GET(request: NextRequest) {
             width: "100%",
             display: "flex",
             flexDirection: "column",
-            backgroundColor: "#121212",
+            backgroundColor: "#1b1b1b",
             fontFamily: "Inter, sans-serif",
             padding: "40px",
           }}
@@ -136,7 +136,7 @@ export async function GET(request: NextRequest) {
               style={{
                 fontSize: "64px",
                 fontWeight: "bold",
-                background: "linear-gradient(to right, #ffffff, #a4a4a4)",
+                background: "linear-gradient(to right, #dbdbdb, #808080)",
                 backgroundClip: "text",
                 color: "transparent",
               }}
@@ -149,7 +149,7 @@ export async function GET(request: NextRequest) {
           <p
             style={{
               fontSize: "32px",
-              color: "#ffffff",
+              color: "#dbdbdb",
               flex: "1",
             }}
           >
@@ -177,7 +177,7 @@ export async function GET(request: NextRequest) {
               <p
                 style={{
                   fontSize: "24px",
-                  color: "#a4a4a4",
+                  color: "#808080",
                   margin: "0 0 4px 0",
                 }}
               >
@@ -186,7 +186,7 @@ export async function GET(request: NextRequest) {
               <p
                 style={{
                   fontSize: "32px",
-                  color: "#ffffff",
+                  color: "#dbdbdb",
                   margin: "0",
                   fontWeight: "bold",
                 }}
@@ -209,7 +209,7 @@ export async function GET(request: NextRequest) {
               <p
                 style={{
                   fontSize: "24px",
-                  color: "#a4a4a4",
+                  color: "#808080",
                   margin: "0 0 4px 0",
                 }}
               >
@@ -218,7 +218,7 @@ export async function GET(request: NextRequest) {
               <p
                 style={{
                   fontSize: "32px",
-                  color: "#ffffff",
+                  color: "#dbdbdb",
                   margin: "0",
                   fontWeight: "bold",
                 }}
@@ -241,7 +241,7 @@ export async function GET(request: NextRequest) {
               <p
                 style={{
                   fontSize: "24px",
-                  color: "#a4a4a4",
+                  color: "#808080",
                   margin: "0 0 4px 0",
                 }}
               >
@@ -250,7 +250,7 @@ export async function GET(request: NextRequest) {
               <p
                 style={{
                   fontSize: "32px",
-                  color: "#ffffff",
+                  color: "#dbdbdb",
                   margin: "0",
                   fontWeight: "bold",
                 }}
@@ -272,7 +272,7 @@ export async function GET(request: NextRequest) {
             <p
               style={{
                 fontSize: "24px",
-                background: "linear-gradient(to right, #ffffff, #a4a4a4)",
+                background: "linear-gradient(to right, #dbdbdb, #808080)",
                 backgroundClip: "text",
                 color: "transparent",
                 margin: "0",
@@ -283,7 +283,7 @@ export async function GET(request: NextRequest) {
             <p
               style={{
                 fontSize: "24px",
-                color: "#a4a4a4",
+                color: "#808080",
                 margin: "0",
               }}
             >
@@ -311,7 +311,7 @@ export async function GET(request: NextRequest) {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "#121212",
+            backgroundColor: "#1b1b1b",
             fontFamily: "Inter, sans-serif",
             padding: "40px",
           }}
@@ -340,7 +340,7 @@ export async function GET(request: NextRequest) {
               style={{
                 fontSize: "56px",
                 fontWeight: "bold",
-                background: "linear-gradient(to right, #ffffff, #a4a4a4)",
+                background: "linear-gradient(to right, #dbdbdb, #808080)",
                 backgroundClip: "text",
                 color: "transparent",
                 marginBottom: "24px",
@@ -351,7 +351,7 @@ export async function GET(request: NextRequest) {
             <p
               style={{
                 fontSize: "32px",
-                color: "#a4a4a4",
+                color: "#808080",
                 maxWidth: "800px",
                 margin: "0",
               }}

@@ -14,7 +14,7 @@ export async function GET() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "#121212",
+            backgroundColor: "#1b1b1b",
             fontFamily: "Inter, sans-serif",
             padding: "40px",
           }}
@@ -50,7 +50,7 @@ export async function GET() {
                 style={{
                   fontSize: "64px",
                   fontWeight: "bold",
-                  background: "linear-gradient(to right, #ffffff, #a4a4a4)",
+                  background: "linear-gradient(to right, #dbdbdb, #808080)",
                   backgroundClip: "text",
                   color: "transparent",
                   marginLeft: "24px",
@@ -62,7 +62,7 @@ export async function GET() {
             <p
               style={{
                 fontSize: "32px",
-                color: "#a4a4a4",
+                color: "#808080",
                 maxWidth: "800px",
                 margin: "0",
               }}
@@ -76,7 +76,7 @@ export async function GET() {
                 padding: "12px 24px",
                 backgroundColor: "#1f1f1f",
                 borderRadius: "8px",
-                color: "#ffffff",
+                color: "#dbdbdb",
                 fontSize: "24px",
               }}
             >

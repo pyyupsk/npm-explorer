@@ -41,7 +41,7 @@ export function DownloadStatistics({ pkg }: { pkg: string }) {
       <CardContent>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button size="sm" className="mb-3">
+            <Button size="sm" className="mb-3" variant="outline">
               Change Period
             </Button>
           </DropdownMenuTrigger>

@@ -114,7 +114,7 @@ export function DownloadsChart({ data, period }: DownloadsChartProps) {
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm">
+              <Button variant="secondary" size="sm">
                 <Download className="h-4 w-4" />
                 Export
               </Button>

@@ -31,7 +31,7 @@ export function MetadataCard({ metadata }: MetadataCardProps) {
           <div className="flex items-center gap-3">
             <h3 className="text-2xl font-bold">{metadata.name}</h3>
             <Badge>v{latestVersion}</Badge>
-            {license && <Badge variant="contrast">{license}</Badge>}
+            {license && <Badge variant="secondary">{license}</Badge>}
           </div>
           <div className="flex gap-3">
             {repository && (
