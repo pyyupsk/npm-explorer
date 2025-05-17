@@ -2,6 +2,7 @@ import { z } from "zod"
 
 import type { DownloadPeriod } from "@/hooks/use-downloads"
 import type { DownloadsRange } from "@/server/types/downloads/range"
+import type { PackageMetadata } from "@/server/types/package/metadata"
 
 import { DOWNLOAD_PERIODS } from "@/constants/downloads"
 import { j, publicProcedure } from "@/server/jstack"
@@ -69,6 +70,53 @@ export const downloadsRouter = j.router({
         throw new Error("Failed to fetch downloads data", { cause: error })
       }
     }),
+
+  total: publicProcedure.input(z.object({ name: z.string() })).query(async ({ c, input }) => {
+    const { name } = input
+    try {
+      const metadataRes = await fetch(`https://registry.npmjs.org/${name}`, {
+        headers: {
+          Accept: "application/json",
+        },
+        next: { revalidate: 3600 },
+      })
+
+      if (!metadataRes.ok) {
+        return c.superjson(0)
+      }
+
+      const metadata = (await metadataRes.json()) as PackageMetadata
+
+      if (!metadata || Object.keys(metadata).length === 0) {
+        return c.superjson(0)
+      }
+
+      const createdAt = new Date(metadata.time.created)
+      const today = new Date()
+
+      const dateRange = `${formatDate(createdAt)}:${formatDate(today)}`
+
+      const response = await fetch(`https://api.npmjs.org/downloads/range/${dateRange}/${name}`, {
+        headers: {
+          Accept: "application/json",
+        },
+        next: { revalidate: 3600 },
+      })
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch downloads data for ${name}`, { cause: response })
+      }
+
+      const data = (await response.json()) as DownloadsRange
+
+      const total = data.downloads.reduce((sum: number, item) => sum + item.downloads, 0)
+
+      return c.superjson(total)
+    } catch (error) {
+      console.error(`Error fetching downloads data for ${name}:`, error)
+      throw new Error("Failed to fetch downloads data", { cause: error })
+    }
+  }),
 })
 
 function formatDate(date: Date) {
