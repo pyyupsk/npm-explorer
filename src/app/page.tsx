@@ -52,6 +52,19 @@ export default function Page() {
             </div>
           </CardContent>
         </Card>
+
+        <p className="text-muted-foreground mt-4 text-center text-xs">
+          This is an unofficial tool and is not affiliated with{" "}
+          <Link
+            href="https://npmjs.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground underline-offset-1.5 underline decoration-dotted"
+          >
+            npm, Inc
+          </Link>
+          .
+        </p>
       </div>
     </main>
   )

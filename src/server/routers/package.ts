@@ -30,6 +30,8 @@ export const packageRouter = j.router({
   }),
 
   popular: publicProcedure.query(async ({ c }) => {
+    // Data source: Anvaka's npm dependency analysis
+    // https://gist.githubusercontent.com/anvaka/8e8fa57c7ee1350e3491/raw/b6f3ebeb34c53775eea00b489a0cea2edd9ee49c/01.most-dependent-upon.md
     try {
       const response = await fetch(
         "https://gist.githubusercontent.com/anvaka/8e8fa57c7ee1350e3491/raw/b6f3ebeb34c53775eea00b489a0cea2edd9ee49c/01.most-dependent-upon.md",

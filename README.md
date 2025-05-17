@@ -2,6 +2,9 @@
 
 A modern web application for exploring npm package metadata and download statistics. Built with Next.js, and TailwindCSS.
 
+> [!WARNING]
+> 📌 Disclaimer: This project is not affiliated with npm, Inc. All package data is sourced from the public npm registry.
+
 ## Features
 
 - 🔍 Search any npm package
@@ -83,6 +86,11 @@ src/
 3. Commit your changes
 4. Push to the branch
 5. Create a Pull Request
+
+## Credits
+
+- Popular packages data is sourced from [Anvaka's npm dependency analysis](https://gist.githubusercontent.com/anvaka/8e8fa57c7ee1350e3491/raw/b6f3ebeb34c53775eea00b489a0cea2edd9ee49c/01.most-dependent-upon.md).
+- NPM package data is sourced from the [public npm registry](https://github.com/npm/registry).
 
 ## License
 
