@@ -41,7 +41,7 @@ export default function Page() {
                     ? popular.map((pkg) => (
                         <Link
                           key={pkg}
-                          href={`/package/${pkg}`}
+                          href={`/package?name=${pkg}`}
                           className="text-foreground underline-offset-1.5 decoration-dotted hover:underline"
                         >
                           {pkg}
