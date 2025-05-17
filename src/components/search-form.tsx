@@ -17,8 +17,15 @@ export default function SearchForm({ popular, isPending }: Props) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (inputValue) {
-      router.push(`/package/${inputValue}`)
+
+    try {
+      if (inputValue) {
+        router.push(`/package?name=${inputValue}`)
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error)
+    } finally {
+      setInputValue("")
     }
   }
 
@@ -33,7 +40,7 @@ export default function SearchForm({ popular, isPending }: Props) {
               ? "Search for an npm package..."
               : popular
                 ? `Search for an npm package (e.g. ${popular.join(", ")})...`
-                : "Search for an npm package (e.g. geothai)..."
+                : "Search for an npm package (e.g. next)..."
           }
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
