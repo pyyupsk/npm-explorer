@@ -8,9 +8,10 @@ import { Input } from "@/components/ui/input"
 
 type Props = {
   popular: (string | undefined)[] | undefined
+  isPending?: boolean
 }
 
-export default function SearchForm({ popular }: Props) {
+export default function SearchForm({ popular, isPending }: Props) {
   const [inputValue, setInputValue] = useState("")
   const router = useRouter()
 
@@ -28,9 +29,11 @@ export default function SearchForm({ popular }: Props) {
         <Input
           type="text"
           placeholder={
-            popular
-              ? `Search for an npm package (e.g. ${popular ? popular.join(", ") : "geothai"})...`
-              : "Search for an npm package..."
+            isPending
+              ? "Search for an npm package..."
+              : popular
+                ? `Search for an npm package (e.g. ${popular.join(", ")})...`
+                : "Search for an npm package (e.g. geothai)..."
           }
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}

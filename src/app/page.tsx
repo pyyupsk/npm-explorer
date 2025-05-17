@@ -1,3 +1,5 @@
+"use client"
+
 import type React from "react"
 
 // TODO: Use logos after getting permission from npm
@@ -7,11 +9,10 @@ import Balancer from "react-wrap-balancer"
 
 import SearchForm from "@/components/search-form"
 import { Card, CardContent } from "@/components/ui/card"
-import { client } from "@/lib/client"
+import { usePopular } from "@/hooks/use-popular"
 
-export default async function Page() {
-  const res = await client.package.popular.$get()
-  const popular = await res.json()
+export default function Page() {
+  const { data: popular, isPending } = usePopular()
 
   return (
     <main className="grid min-h-screen place-items-center">
@@ -29,24 +30,26 @@ export default async function Page() {
 
         <Card className="mt-6 w-full max-w-xl">
           <CardContent className="flex flex-col gap-6">
-            <SearchForm popular={popular} />
+            <SearchForm popular={popular} isPending={isPending} />
 
-            <p className="text-muted-foreground text-center text-sm">
+            <div className="text-muted-foreground text-center text-sm">
               Popular packages:{" "}
-              <span className="inline-flex flex-wrap gap-1.5">
-                {popular
-                  ? popular.map((pkg) => (
-                      <Link
-                        key={pkg}
-                        href={`/package/${pkg}`}
-                        className="text-foreground underline-offset-1.5 decoration-dotted hover:underline"
-                      >
-                        {pkg}
-                      </Link>
-                    ))
-                  : "No popular packages"}
-              </span>
-            </p>
+              <div className="inline-flex flex-wrap gap-1.5">
+                {isPending
+                  ? "Loading..."
+                  : popular
+                    ? popular.map((pkg) => (
+                        <Link
+                          key={pkg}
+                          href={`/package/${pkg}`}
+                          className="text-foreground underline-offset-1.5 decoration-dotted hover:underline"
+                        >
+                          {pkg}
+                        </Link>
+                      ))
+                    : "No popular packages"}
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>
