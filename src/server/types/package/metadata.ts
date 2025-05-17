@@ -2,114 +2,72 @@ export type PackageMetadata = {
   _id: string
   _rev: string
   name: string
-  "dist-tags": DistTags
-  versions: Versions
-  time: Time
-  bugs: Bugs
-  author: Author
+  versions: Record<string, VersionMetadata>
+  // Optional fields
+  "dist-tags"?: DistTags
+  description?: string
+  time?: Time
+  maintainers?: Maintainer[]
+  repository?: Repository
   license?: string
-  homepage: string
-  keywords: string[]
-  repository: Repository
-  description: string
-  maintainers: Maintainer[]
-  readme: string
-  readmeFilename: string
-}
-
-type DistTags = {
-  latest: string
-}
-
-type Versions = {
-  [key: string]: VersionMetadata
+  readme?: string
+  homepage?: string
+  keywords?: string[]
+  author?: Author
+  bugs?: Bugs
 }
 
 type VersionMetadata = {
   name: string
   version: string
-  author: Author
-  license: string
-  _id: string
-  maintainers: Maintainer[]
-  homepage: string
-  bugs: Bugs
-  dist: Dist
-  main: string
-  _from: string
-  types: string
-  module: string
-  scripts: Scripts
-  _npmUser: NpmUser
-  _resolved: string
-  _integrity: string
-  repository: Repository
-  _npmVersion: string
-  description: string
-  directories: Directories
-  _nodeVersion: string
-  _hasShrinkwrap: boolean
-  dependencies: Dependencies
-  devDependencies: Dependencies
-  peerDependencies: Dependencies
-  optionalDependencies: Dependencies
-  _npmOperationalInternal: NpmOperationalInternal
+  dependencies?: Record<string, string>
+  devDependencies?: Record<string, string>
+  peerDependencies?: Record<string, string>
+  optionalDependencies?: Record<string, string>
+  scripts?: Record<string, string>
+  main?: string
+  module?: string
+  types?: string
+  bin?: string | Record<string, string>
+  files?: string[]
+  license?: string
+  repository?: Repository
+  author?: Author | string
+  maintainers?: Maintainer[]
+  engines?: Record<string, string>
+  homepage?: string
+  keywords?: string[]
+  bugs?: Bugs
 }
 
-type Author = {
-  name: string
+type DistTags = {
+  latest?: string
+  [tag: string]: string | undefined
+}
+
+type Time = {
+  created?: string
+  modified?: string
+  [version: string]: string | undefined
 }
 
 type Maintainer = {
   name: string
-  email: string
-}
-
-type Bugs = {
-  url: string
-}
-
-type Dist = {
-  shasum: string
-  tarball: string
-  fileCount: number
-  integrity: string
-  signatures: Signature[]
-  unpackedSize: number
-}
-
-type Signature = {
-  sig: string
-  keyid: string
-}
-
-type Scripts = {
-  [key: string]: string
-}
-
-type NpmUser = {
-  name: string
-  email: string
+  email?: string
 }
 
 type Repository = {
-  url: string
-  type: string
+  type?: string
+  url?: string
 }
 
-type Directories = object
-
-type Dependencies = {
-  [key: string]: string
+type Author = {
+  name?: string
+  email?: string
+  url?: string
 }
 
-type NpmOperationalInternal = {
-  tmp: string
-  host: string
-}
-
-type Time = {
-  created: string
-  modified: string
-  [key: string]: string
+type Bugs = {
+  url?: string
+  email?: string
 }

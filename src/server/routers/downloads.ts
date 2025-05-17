@@ -91,7 +91,12 @@ export const downloadsRouter = j.router({
         return c.superjson(-1)
       }
 
-      const createdAt = new Date(metadata.time.created)
+      // NPM, Inc. Initial release
+      const DEFAULT_DATE = "2010-01-12T00:00:00.000Z"
+
+      const createdAt = new Date(
+        metadata.time ? metadata.time.created || DEFAULT_DATE : DEFAULT_DATE,
+      )
       const today = new Date()
 
       const dateRange = `${formatDate(createdAt)}:${formatDate(today)}`
