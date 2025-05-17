@@ -1,97 +1,115 @@
-# NPM Explorer
+# 🌐 NPM Explorer
 
-A modern web application for exploring npm package metadata and download statistics. Built with Next.js, and TailwindCSS.
+A sleek, modern web application for browsing npm package metadata and visualizing download statistics — powered by **Next.js** and **TailwindCSS**.
 
-> [!WARNING]
-> 📌 Disclaimer: This project is not affiliated with npm, Inc. All package data is sourced from the public npm registry.
+> ⚠️ **Disclaimer:**
+> This project is _not affiliated_ with npm, Inc. All package data is fetched from the public npm registry.
 
-## Features
+## ✨ Features
 
-- 🔍 Search any npm package
-- 📊 View detailed package metadata
-- 📈 Track download statistics
-- 🎨 Modern, responsive UI
-- 🌙 Dark mode support
-- 📱 Mobile-friendly design
+- 🔍 **Search** any npm package
+- 📦 **View** detailed package metadata
+- 📈 **Analyze** download trends over time
+- 🏷️ **Generate** customizable download badges
+- 💡 **Modern UI** with a responsive, mobile-first layout
+- 🌙 **Dark mode** support
+- 📱 **Fully mobile-optimized** (maybe)
 
-## Tech Stack
+## 🛠 Tech Stack
 
-- **Framework**: Next.js 15
-- **UI**: TailwindCSS 4
-- **Styling**: shadcn/ui components
-- **State Management**: TanStack Query
-- **API**: Hono, JStack
-- **Deployment**:
-  - **Frontend**: Vercel
-  - **Backend**: Cloudflare Workers
-- **Package Manager**: Bun
+| Layer               | Stack                                          |
+| ------------------- | ---------------------------------------------- |
+| **Framework**       | Next.js 15                                     |
+| **Styling**         | TailwindCSS 4 + shadcn/ui                      |
+| **State**           | TanStack Query                                 |
+| **API**             | Hono + JStack                                  |
+| **Deployment**      | Frontend: Vercel • Backend: Cloudflare Workers |
+| **Package Manager** | Bun                                            |
 
-## Getting Started
+## 🚀 Getting Started
 
-1. Clone the repository
+1. **Clone the repository**:
 
    ```bash
    git clone git@github.com:pyyupsk/npm-explorer.git
    cd npm-explorer
    ```
 
-2. Install dependencies:
+2. **Install dependencies**:
+
    ```bash
    bun install
    ```
-3. Start the development server:
+
+3. **Start development servers**:
+
    ```bash
-   bun run dev # for frontend
+   # Frontend
+   bun run dev
+
+   # Backend
    bun run server:dev
    ```
 
-## Available Scripts
+## 📡 API Endpoints
 
-- `bun build` - Build for production
-- `bun dev` - Start development server
-- `bun format` - Format code with Prettier
-- `bun lint` - Run ESLint
-- `bun lint:fix` - Fix ESLint errors
-- `bun server:deploy` - Deploy backend to Cloudflare
-- `bun server:dev` - Start backend development server
-- `bun start` - Start production server
-- `bun typecheck` - Run TypeScript type checking
+### 🔓 Public
 
-## Project Structure
+- `/badge/downloads/:package_name`
+  → Generate a badge showing total downloads
+  _Example: `/badge/downloads/react`_
 
+### 🔒 Private
+
+- `/api/og`
+  → Generate OpenGraph preview images
+
+- `/api/package/metadata`
+  → Retrieve package metadata
+
+- `/api/downloads/range`
+  → Fetch download stats over a date range
+
+## 🏷 Badge Integration
+
+Use the badge endpoint to embed real-time npm download stats:
+
+```md
+![Downloads](https://npm.fasu.dev/badge/downloads/react)
 ```
-src/
-├── app/              # Next.js app router pages
-├── components/       # React components
-├── constants/        # Application constants
-├── hooks/            # Custom React hooks
-├── lib/              # Utility functions and configurations
-├── server/           # API routes and server-side logic
-├── styles/           # Global styles and TailwindCSS config
-├── types/            # TypeScript type definitions
-├── utils/            # Utility functions and helpers
-└── middleware.ts     # Next.js middleware configuration
+
+**Customizable Parameters:**
+
+| Param        | Description                   | Default   | Preview                                      |
+| ------------ | ----------------------------- | --------- | -------------------------------------------- |
+| `label`      | Custom label text             | downloads | None                                         |
+| `labelColor` | Background color of the label | `#555`    | ![#555](.github/assets/color-555-circle.png) |
+| `valueColor` | Background color of the value | `#4c1`    | ![#4c1](.github/assets/color-4c1-circle.png) |
+
+**Example with custom styles**:
+
+```md
+![Downloads](https://npm.fasu.dev/badge/downloads/react?label=npm&labelColor=red&valueColor=blue)
 ```
 
-## API Routes
+> 💡 **Tip:**
+> If your package name includes special characters, use [URL encoding](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent).
 
-- `/api/package/metadata` - Get package metadata
-- `/api/downloads/range` - Get download statistics
-- `/api/og` - Generate OpenGraph images
+## 🤝 Contributing
 
-## Contributing
+We welcome contributions! Here's how:
 
 1. Fork the repository
-2. Create your feature branch
+2. Create a new feature branch
 3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+4. Push to your fork
+5. Open a Pull Request 🎉
 
-## Credits
+## 🙌 Credits
 
-- Popular packages data is sourced from [Anvaka's npm dependency analysis](https://gist.githubusercontent.com/anvaka/8e8fa57c7ee1350e3491/raw/b6f3ebeb34c53775eea00b489a0cea2edd9ee49c/01.most-dependent-upon.md).
-- NPM package data is sourced from the [public npm registry](https://github.com/npm/registry).
+- Popular package data by [Anvaka’s dependency graph](https://gist.githubusercontent.com/anvaka/8e8fa57c7ee1350e3491/raw/b6f3ebeb34c53775eea00b489a0cea2edd9ee49c/01.most-dependent-upon.md)
+- All npm data sourced from the [public npm registry](https://github.com/npm/registry)
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Licensed under the [MIT License](LICENSE).
