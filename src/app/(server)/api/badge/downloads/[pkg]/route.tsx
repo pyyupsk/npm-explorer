@@ -17,10 +17,15 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     const response = await client.downloads.total.$get({ name: pkg })
 
     if (!response.ok) {
-      throw new Error(`API responded with status: ${response.status}`)
+      throw new Error(`${response.status} ${response.statusText}`)
     }
 
     const total = await response.json()
+
+    if (total === -1) {
+      throw new Error("not found")
+    }
+
     const formattedCount = formatNumber(total)
 
     const svg = generateBadge({
@@ -39,10 +44,13 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     })
   } catch (error) {
     console.error(`Error generating badge for ${pkg}:`, error)
+
+    const value = error instanceof Error ? error.message : "error"
+
     return new Response(
       generateBadge({
         label,
-        value: "error",
+        value,
         labelColor: BADGE_COLORS.error.label,
         valueColor: BADGE_COLORS.error.value,
       }),

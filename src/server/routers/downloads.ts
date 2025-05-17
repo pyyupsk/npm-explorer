@@ -82,13 +82,13 @@ export const downloadsRouter = j.router({
       })
 
       if (!metadataRes.ok) {
-        return c.superjson(0)
+        return c.superjson(-1)
       }
 
       const metadata = (await metadataRes.json()) as PackageMetadata
 
       if (!metadata || Object.keys(metadata).length === 0) {
-        return c.superjson(0)
+        return c.superjson(-1)
       }
 
       const createdAt = new Date(metadata.time.created)
