@@ -5,9 +5,14 @@ import { BADGE_COLORS, generateBadge } from "@/utils/badge"
 import { generateETag } from "@/utils/e-tag"
 import { formatNumber } from "@/utils/format-number"
 
-export async function GET(request: NextRequest, { params }: { params: Promise<{ pkg: string }> }) {
-  const { pkg } = await params
+export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
+
+  const pkg = searchParams.get("q")
+
+  if (!pkg) {
+    return new Response("No package provided", { status: 400 })
+  }
 
   const label = searchParams.get("label") || "downloads"
   const labelColor = searchParams.get("labelColor") || BADGE_COLORS.default.label

@@ -55,9 +55,9 @@ A sleek, modern web application for browsing npm package metadata and visualizin
 
 ### 🔓 Public
 
-- `/badge/downloads/:package_name`
+- `/badge/downloads?q=<packageName>`
   → Generate a badge showing total downloads
-  _Example: `/badge/downloads/react`_
+  _Example: `/badge/downloads?q=react`_
 
 ### 🔒 Private
 
@@ -75,7 +75,7 @@ A sleek, modern web application for browsing npm package metadata and visualizin
 Use the badge endpoint to embed real-time npm download stats:
 
 ```md
-![Downloads](https://npm.fasu.dev/badge/downloads/react)
+![Downloads](https://npm.fasu.dev/badge/downloads?q=react)
 ```
 
 **Customizable Parameters:**
@@ -89,7 +89,7 @@ Use the badge endpoint to embed real-time npm download stats:
 **Example with custom styles**:
 
 ```md
-![Downloads](https://npm.fasu.dev/badge/downloads/react?label=npm&labelColor=red&valueColor=blue)
+![Downloads](https://npm.fasu.dev/badge/downloads?q=react?label=npm&labelColor=red&valueColor=blue)
 ```
 
 > 💡 **Tip:**
