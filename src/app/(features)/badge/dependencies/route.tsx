@@ -38,10 +38,10 @@ export async function GET(request: NextRequest) {
     }
 
     const deps = {
-      dependencies: Object.keys(versionData.dependencies || {}).length,
-      devDependencies: Object.keys(versionData.devDependencies || {}).length,
-      peerDependencies: Object.keys(versionData.peerDependencies || {}).length,
-      optionalDependencies: Object.keys(versionData.optionalDependencies || {}).length,
+      dependencies: Object.keys(versionData.dependencies ?? {}).length,
+      devDependencies: Object.keys(versionData.devDependencies ?? {}).length,
+      peerDependencies: Object.keys(versionData.peerDependencies ?? {}).length,
+      optionalDependencies: Object.keys(versionData.optionalDependencies ?? {}).length,
     }
 
     const totalDeps =
