@@ -10,19 +10,19 @@ type MetadataCardProps = Readonly<{
 }>
 
 export function MetadataCard({ metadata }: MetadataCardProps) {
-  const latestVersion = metadata["dist-tags"]?.latest || "Unknown"
-  const description = metadata.description || "No description available"
-  const repository = metadata.repository?.url?.replace(/^(git\+|\.git$)/g, "") || null
-  const homepage = metadata.homepage || null
-  const license = metadata.license || "Not specified"
-  const maintainers = metadata.maintainers || []
+  const latestVersion = metadata["dist-tags"]?.latest ?? "Unknown"
+  const description = metadata.description ?? "No description available"
+  const repository = metadata.repository?.url?.replace(/^(git\+|\.git$)/g, "") ?? null
+  const homepage = metadata.homepage ?? null
+  const license = metadata.license ?? "Not specified"
+  const maintainers = metadata.maintainers ?? []
   const createdDate = metadata.time?.created
     ? new Date(metadata.time.created).toLocaleDateString()
     : "Unknown"
   const modifiedDate = metadata.time?.modified
     ? new Date(metadata.time.modified).toLocaleDateString()
     : "Unknown"
-  const keywords = metadata.keywords || []
+  const keywords = metadata.keywords ?? []
 
   return (
     <Card>

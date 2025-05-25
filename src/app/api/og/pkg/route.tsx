@@ -81,9 +81,9 @@ export async function GET(request: NextRequest) {
       downloadsText = `${formatNumber(downloadsData.downloads.reduce((sum: number, item) => sum + item.downloads, 0))} downloads in the last month`
     }
 
-    const version = metadata["dist-tags"]?.latest || "Unknown version"
-    const description = metadata.description || "No description available"
-    const license = metadata.license || "No license specified"
+    const version = metadata["dist-tags"]?.latest ?? "Unknown version"
+    const description = metadata.description ?? "No description available"
+    const license = metadata.license ?? "No license specified"
 
     const truncatedDescription =
       description.length > 200 ? description.substring(0, 197) + "..." : description

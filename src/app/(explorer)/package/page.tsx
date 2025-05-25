@@ -35,7 +35,7 @@ export async function generateMetadata({ searchParams }: PackagePageProps): Prom
       }
     }
 
-    const description = metadata.description || DEFAULT_DESCRIPTION
+    const description = metadata.description ?? DEFAULT_DESCRIPTION
 
     return commonMetadata({
       title: name,

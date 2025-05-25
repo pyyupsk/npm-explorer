@@ -14,9 +14,9 @@ export async function GET(request: NextRequest) {
     return new Response("No package provided", { status: 400 })
   }
 
-  const label = searchParams.get("label") || "downloads"
-  const labelColor = searchParams.get("labelColor") || BADGE_COLORS.default.label
-  const valueColor = searchParams.get("valueColor") || BADGE_COLORS.default.value
+  const label = searchParams.get("label") ?? "downloads"
+  const labelColor = searchParams.get("labelColor") ?? BADGE_COLORS.default.label
+  const valueColor = searchParams.get("valueColor") ?? BADGE_COLORS.default.value
 
   try {
     const response = await client.downloads.total.$get({ name: pkg })

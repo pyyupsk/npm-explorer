@@ -89,7 +89,7 @@ export const downloadsRouter = j.router({
       const DEFAULT_DATE = "2010-01-12T00:00:00.000Z"
 
       const createdAt = new Date(
-        metadata.time ? metadata.time.created || DEFAULT_DATE : DEFAULT_DATE,
+        metadata.time ? (metadata.time.created ?? DEFAULT_DATE) : DEFAULT_DATE,
       )
       const today = new Date()
 
