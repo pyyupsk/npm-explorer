@@ -34,7 +34,7 @@ export function DownloadsChart({ data, period }: DownloadsChartProps) {
   const chartData = useMemo(() => prepareChartData(data, period as DownloadPeriod), [data, period])
   const totalDownloads = useMemo(() => calculateTotalDownloads(data?.downloads), [data])
 
-  if (!data || !data.downloads || data.downloads.length === 0) {
+  if (!data?.downloads?.length) {
     return (
       <Card className="p-6">
         <p className="text-muted-foreground text-center">No download data available</p>

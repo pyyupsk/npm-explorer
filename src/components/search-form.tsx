@@ -6,6 +6,15 @@ import { useState } from "react"
 
 import { Input } from "@/components/ui/input"
 
+function getPlaceholderText(
+  isPending: boolean | undefined,
+  popular: (string | undefined)[] | undefined,
+) {
+  if (isPending) return "Search for an npm package..."
+  if (!popular) return "Search for an npm package (e.g. next)..."
+  return `Search for an npm package (e.g. ${popular.join(", ")})...`
+}
+
 type Props = {
   popular: (string | undefined)[] | undefined
   isPending?: boolean
@@ -35,13 +44,7 @@ export default function SearchForm({ popular, isPending }: Props) {
         <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
         <Input
           type="text"
-          placeholder={
-            isPending
-              ? "Search for an npm package..."
-              : popular
-                ? `Search for an npm package (e.g. ${popular.join(", ")})...`
-                : "Search for an npm package (e.g. next)..."
-          }
+          placeholder={getPlaceholderText(isPending, popular)}
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           className="pl-9"

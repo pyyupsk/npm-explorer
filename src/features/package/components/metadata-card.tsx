@@ -12,7 +12,7 @@ type MetadataCardProps = {
 export function MetadataCard({ metadata }: MetadataCardProps) {
   const latestVersion = metadata["dist-tags"]?.latest || "Unknown"
   const description = metadata.description || "No description available"
-  const repository = metadata.repository?.url?.replace(/^git\+|\.git$/g, "") || null
+  const repository = metadata.repository?.url?.replace(/^(git\+|\.git$)/g, "") || null
   const homepage = metadata.homepage || null
   const license = metadata.license || "Not specified"
   const maintainers = metadata.maintainers || []
@@ -80,8 +80,8 @@ export function MetadataCard({ metadata }: MetadataCardProps) {
             </div>
             <div className="flex flex-wrap gap-3">
               {maintainers.length > 0 ? (
-                maintainers.slice(0, 5).map((maintainer, index) => (
-                  <Badge key={index} variant="outline">
+                maintainers.slice(0, 5).map((maintainer) => (
+                  <Badge key={maintainer.name} variant="outline">
                     {maintainer.name}
                   </Badge>
                 ))
@@ -99,8 +99,8 @@ export function MetadataCard({ metadata }: MetadataCardProps) {
           <div className="mt-4">
             <p className="text-muted-foreground mb-2 text-sm">Keywords:</p>
             <div className="flex flex-wrap gap-3">
-              {keywords.map((keyword: string, index: number) => (
-                <Badge key={index} variant="outline">
+              {keywords.map((keyword: string) => (
+                <Badge key={keyword} variant="outline">
                   {keyword}
                 </Badge>
               ))}

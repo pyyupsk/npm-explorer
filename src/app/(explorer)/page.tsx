@@ -9,6 +9,21 @@ import SearchForm from "@/components/search-form"
 import { Card, CardContent } from "@/components/ui/card"
 import { usePopular } from "@/hooks/use-popular"
 
+function renderPopularPackages(isPending: boolean, popular: (string | undefined)[] | undefined) {
+  if (isPending) return "Loading..."
+  if (!popular) return "No popular packages"
+
+  return popular.map((pkg) => (
+    <Link
+      key={pkg}
+      href={`/package?name=${pkg}`}
+      className="text-foreground underline-offset-1.5 decoration-dotted hover:underline"
+    >
+      {pkg}
+    </Link>
+  ))
+}
+
 export default function Page() {
   const { data: popular, isPending } = usePopular()
 
@@ -30,19 +45,7 @@ export default function Page() {
             <div className="text-muted-foreground text-center text-sm">
               Popular packages:{" "}
               <div className="inline-flex flex-wrap gap-1.5">
-                {isPending
-                  ? "Loading..."
-                  : popular
-                    ? popular.map((pkg) => (
-                        <Link
-                          key={pkg}
-                          href={`/package?name=${pkg}`}
-                          className="text-foreground underline-offset-1.5 decoration-dotted hover:underline"
-                        >
-                          {pkg}
-                        </Link>
-                      ))
-                    : "No popular packages"}
+                {renderPopularPackages(isPending, popular)}
               </div>
             </div>
           </CardContent>
