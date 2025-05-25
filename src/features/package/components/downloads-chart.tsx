@@ -23,10 +23,10 @@ import { calculateTotalDownloads, prepareChartData } from "@/features/package/ut
 import { exportAsCSV, exportAsJSON } from "@/features/package/utils/export"
 import { formatNumber } from "@/features/package/utils/format-number"
 
-type DownloadsChartProps = {
+type DownloadsChartProps = Readonly<{
   data: InferOutput["downloads"]["range"]
   period: string
-}
+}>
 
 const chartConfig = {} satisfies ChartConfig
 

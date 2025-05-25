@@ -2,10 +2,10 @@ import Link from "next/link"
 
 import { buttonVariants } from "@/components/ui/button"
 
-type Props = {
+type Props = Readonly<{
   title: string
   description: string
-}
+}>
 
 export function NotFound({ title, description }: Props) {
   return (

@@ -6,9 +6,9 @@ import { MetadataCard } from "@/features/package/components/metadata-card"
 import { client } from "@/lib/client"
 import { commonMetadata } from "@/lib/metadata"
 
-type PackagePageProps = {
+type PackagePageProps = Readonly<{
   searchParams: Promise<{ name: string | undefined }>
-}
+}>
 
 export async function generateMetadata({ searchParams }: PackagePageProps): Promise<Metadata> {
   const { name } = await searchParams

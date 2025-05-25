@@ -15,10 +15,10 @@ function getPlaceholderText(
   return `Search for an npm package (e.g. ${popular.join(", ")})...`
 }
 
-type Props = {
+type Props = Readonly<{
   popular: (string | undefined)[] | undefined
   isPending?: boolean
-}
+}>
 
 export default function SearchForm({ popular, isPending }: Props) {
   const [inputValue, setInputValue] = useState("")

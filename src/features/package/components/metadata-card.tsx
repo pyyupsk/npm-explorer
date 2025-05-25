@@ -5,9 +5,9 @@ import type { InferOutput } from "@/server"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 
-type MetadataCardProps = {
+type MetadataCardProps = Readonly<{
   metadata: InferOutput["package"]["metadata"]
-}
+}>
 
 export function MetadataCard({ metadata }: MetadataCardProps) {
   const latestVersion = metadata["dist-tags"]?.latest || "Unknown"

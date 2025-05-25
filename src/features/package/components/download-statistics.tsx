@@ -30,7 +30,7 @@ function renderChartContent(isPending: boolean, data: DownloadsRange | undefined
   return <div className={classes}>No data available</div>
 }
 
-export function DownloadStatistics({ pkg }: { pkg: string }) {
+export function DownloadStatistics({ pkg }: Readonly<{ pkg: string }>) {
   const { data, isPending, period, handlePeriodChange } = useDownloads(pkg)
 
   return (
