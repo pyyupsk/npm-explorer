@@ -22,7 +22,7 @@ async function getLastModified(path: string): Promise<string> {
   const data: GitHubCommitsResponse = await res.json()
 
   if (data.length > 0 && data[0]?.commit?.committer?.date) {
-    return data[0].commit.committer.date as string
+    return data[0].commit.committer.date
   }
 
   return new Date().toISOString()
