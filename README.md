@@ -1,5 +1,7 @@
 # 🌐 NPM Explorer
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pyyupsk_npm-explorer&metric=alert_status&token=YOUR_TOKEN)](https://sonarcloud.io/dashboard?id=pyyupsk_npm-explorer)
+
 A sleek, modern web application for browsing npm package metadata and visualizing download statistics — powered by **Next.js** and **TailwindCSS**.
 
 > ⚠️ **Disclaimer:**
@@ -59,6 +61,18 @@ A sleek, modern web application for browsing npm package metadata and visualizin
   → Generate a badge showing total downloads
   _Example: `/badge/downloads?q=react`_
 
+- `/badge/version?q=<packageName>`
+  → Generate a badge showing latest version
+  _Example: `/badge/version?q=react`_
+
+- `/badge/license?q=<packageName>`
+  → Generate a badge showing package license
+  _Example: `/badge/license?q=react`_
+
+- `/badge/dependencies?q=<packageName>`
+  → Generate a badge showing total dependencies count
+  _Example: `/badge/dependencies?q=react`_
+
 ### 🔒 Private
 
 - `/api/og`
@@ -72,10 +86,13 @@ A sleek, modern web application for browsing npm package metadata and visualizin
 
 ## 🏷 Badge Integration
 
-Use the badge endpoint to embed real-time npm download stats:
+Use the badge endpoints to embed real-time npm package information:
 
 ```md
 ![Downloads](https://npm.fasu.dev/badge/downloads?q=react)
+![Version](https://npm.fasu.dev/badge/version?q=react)
+![License](https://npm.fasu.dev/badge/license?q=react)
+![Dependencies](https://npm.fasu.dev/badge/dependencies?q=react)
 ```
 
 **Customizable Parameters:**
@@ -107,7 +124,7 @@ We welcome contributions! Here's how:
 
 ## 🙌 Credits
 
-- Popular package data by [Anvaka’s dependency graph](https://gist.githubusercontent.com/anvaka/8e8fa57c7ee1350e3491/raw/b6f3ebeb34c53775eea00b489a0cea2edd9ee49c/01.most-dependent-upon.md)
+- Popular package data by [Anvaka's dependency graph](https://gist.githubusercontent.com/anvaka/8e8fa57c7ee1350e3491/raw/b6f3ebeb34c53775eea00b489a0cea2edd9ee49c/01.most-dependent-upon.md)
 - All npm data sourced from the [public npm registry](https://github.com/npm/registry)
 
 ## 📄 License
