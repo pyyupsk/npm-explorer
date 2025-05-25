@@ -5,10 +5,9 @@ import type { GitHubCommitsResponse } from "@/types/github"
 import { BASE_URL } from "@/constants/domain"
 
 const routeToPath: Record<string, string> = {
-  "/": "src/app/page.tsx",
-  "/package": "src/app/package/page.tsx",
-  "/badge": "src/app/badge",
-  "/badge/downloads": "src/app/badge/downloads/route.tsx",
+  "/": "src/app/(explorer)/page.tsx",
+  "/package": "src/app/(explorer)/package/page.tsx",
+  "/badge/downloads": "src/app/(features)/badge/downloads/route.tsx",
 }
 
 async function getLastModified(path: string): Promise<string> {
