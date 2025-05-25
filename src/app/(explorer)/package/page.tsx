@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 
-import { DownloadStatistics } from "@/components/download-statistics"
-import { MetadataCard } from "@/components/metadata-card"
-import { NotFound } from "@/components/not-found"
+import { NotFound } from "@/components/shared/not-found"
+import { DownloadStatistics } from "@/features/package/components/download-statistics"
+import { MetadataCard } from "@/features/package/components/metadata-card"
 import { client } from "@/lib/client"
 import { commonMetadata } from "@/lib/metadata"
 
@@ -25,8 +25,8 @@ export async function generateMetadata({ searchParams }: PackagePageProps): Prom
   const DEFAULT_DESCRIPTION = `Explore ${name} npm package statistics and metadata`
 
   try {
-    const metadataRes = await client.package.metadata.$get({ name })
-    const metadata = await metadataRes.json()
+    const response = await client.package.metadata.$get({ name })
+    const metadata = await response.json()
 
     if (!metadata || Object.keys(metadata).length === 0) {
       return {
@@ -64,8 +64,8 @@ export default async function Page({ searchParams }: PackagePageProps) {
   }
 
   try {
-    const metadataRes = await client.package.metadata.$get({ name })
-    const metadata = await metadataRes.json()
+    const response = await client.package.metadata.$get({ name })
+    const metadata = await response.json()
 
     if (!metadata || Object.keys(metadata).length === 0) {
       return (

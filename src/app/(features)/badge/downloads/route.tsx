@@ -1,9 +1,9 @@
 import type { NextRequest } from "next/server"
 
+import { BADGE_COLORS, generateBadge } from "@/features/badge/utils/badge"
+import { generateETag } from "@/features/badge/utils/e-tag"
+import { formatNumber } from "@/features/package/utils/format-number"
 import { client } from "@/lib/client"
-import { BADGE_COLORS, generateBadge } from "@/utils/badge"
-import { generateETag } from "@/utils/e-tag"
-import { formatNumber } from "@/utils/format-number"
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams

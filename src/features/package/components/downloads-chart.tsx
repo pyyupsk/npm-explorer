@@ -5,9 +5,9 @@ import { useMemo } from "react"
 import { XAxis, CartesianGrid, AreaChart, Area, YAxis } from "recharts"
 
 import type { ChartConfig } from "@/components/ui/chart"
-import type { DownloadPeriod } from "@/hooks/use-downloads"
+import type { DownloadPeriod } from "@/features/package/hooks/use-downloads"
+import type { ExportData } from "@/features/package/utils/export"
 import type { InferOutput } from "@/server"
-import type { ExportData } from "@/utils/export"
 
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -19,9 +19,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { CHART_MARGIN } from "@/constants/downloads"
-import { calculateTotalDownloads, prepareChartData } from "@/utils/chart"
-import { exportAsCSV, exportAsJSON } from "@/utils/export"
-import { formatNumber } from "@/utils/format-number"
+import { calculateTotalDownloads, prepareChartData } from "@/features/package/utils/chart"
+import { exportAsCSV, exportAsJSON } from "@/features/package/utils/export"
+import { formatNumber } from "@/features/package/utils/format-number"
 
 type DownloadsChartProps = {
   data: InferOutput["downloads"]["range"]

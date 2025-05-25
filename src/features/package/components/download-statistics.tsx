@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Tabs, TabsContent } from "@/components/ui/tabs"
 import { DOWNLOAD_PERIODS } from "@/constants/downloads"
-import { useDownloads } from "@/hooks/use-downloads"
+import { useDownloads } from "@/features/package/hooks/use-downloads"
 
 import { DownloadsChart } from "./downloads-chart"
 

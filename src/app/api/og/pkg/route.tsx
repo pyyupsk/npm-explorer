@@ -3,8 +3,8 @@ import type { NextRequest } from "next/server"
 import { ImageResponse } from "next/og"
 
 import { BASE_URL } from "@/constants/domain"
+import { formatNumber } from "@/features/package/utils/format-number"
 import { client } from "@/lib/client"
-import { formatNumber } from "@/utils/format-number"
 
 export const runtime = "edge"
 

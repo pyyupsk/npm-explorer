@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-import type { DownloadPeriod } from "@/hooks/use-downloads"
+import type { DownloadPeriod } from "@/features/package/hooks/use-downloads"
 import type { DownloadsRange } from "@/server/types/downloads/range"
 import type { PackageMetadata } from "@/server/types/package/metadata"
 

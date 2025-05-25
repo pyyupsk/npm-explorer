@@ -1,4 +1,4 @@
-import type { DownloadPeriod } from "@/hooks/use-downloads"
+import type { DownloadPeriod } from "@/features/package/hooks/use-downloads"
 
 export const DOWNLOAD_PERIODS: DownloadPeriod[] = ["last-week", "last-month", "last-year"]
 

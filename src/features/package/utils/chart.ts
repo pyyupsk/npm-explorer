@@ -1,4 +1,4 @@
-import type { DownloadPeriod } from "@/hooks/use-downloads"
+import type { DownloadPeriod } from "@/features/package/hooks/use-downloads"
 
 function formatChartDate(dateString: string, period: DownloadPeriod) {
   const date = new Date(dateString)
