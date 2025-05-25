@@ -2,29 +2,12 @@ import type { NextRequest } from "next/server"
 
 import { BADGE_COLORS, generateBadge } from "@/features/badge/utils/badge"
 import { generateETag } from "@/features/badge/utils/e-tag"
-import { client } from "@/lib/client"
+import { handleRequest } from "@/features/badge/utils/handle-request"
 
 export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams
-
-  const pkg = searchParams.get("q")
-
-  if (!pkg) {
-    return new Response("No package provided", { status: 400 })
-  }
-
-  const label = searchParams.get("label") ?? "deps"
-  const labelColor = searchParams.get("labelColor") ?? BADGE_COLORS.default.label
-  const valueColor = searchParams.get("valueColor") ?? BADGE_COLORS.default.value
-
   try {
-    const response = await client.package.metadata.$get({ name: pkg })
+    const { pkg, metadata, label, labelColor, valueColor } = await handleRequest(request, "deps")
 
-    if (!response.ok) {
-      throw new Error(`${response.status} ${response.statusText}`)
-    }
-
-    const metadata = await response.json()
     const latestVersion = metadata["dist-tags"]?.latest
 
     if (!latestVersion) {
@@ -57,19 +40,18 @@ export async function GET(request: NextRequest) {
     return new Response(svg, {
       headers: {
         "Content-Type": "image/svg+xml",
-        "Cache-Control": "public, max-age=3600", // Cache for 1 hour
+        "Cache-Control": "public, max-age=3600",
         ETag: generateETag(pkg, label, totalDeps.toString()),
       },
     })
   } catch (error) {
-    console.error(`Error generating badge for ${pkg}:`, error)
-
-    const value = error instanceof Error ? error.message : "error"
+    const errorMessage = error instanceof Error ? error.message : "Unknown error"
+    console.error(`Error generating badge:`, error)
 
     return new Response(
       generateBadge({
-        label,
-        value,
+        label: "error",
+        value: errorMessage,
         labelColor: BADGE_COLORS.error.label,
         valueColor: BADGE_COLORS.error.value,
       }),
@@ -78,7 +60,7 @@ export async function GET(request: NextRequest) {
           "Content-Type": "image/svg+xml",
           "Cache-Control": "no-cache",
         },
-        status: 500,
+        status: errorMessage.includes("not found") ? 404 : 500,
       },
     )
   }

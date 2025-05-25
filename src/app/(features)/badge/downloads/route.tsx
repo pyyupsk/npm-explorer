@@ -2,21 +2,12 @@ import type { NextRequest } from "next/server"
 
 import { BADGE_COLORS, generateBadge } from "@/features/badge/utils/badge"
 import { generateETag } from "@/features/badge/utils/e-tag"
+import { handleRequest } from "@/features/badge/utils/handle-request"
 import { formatNumber } from "@/features/package/utils/format-number"
 import { client } from "@/lib/client"
 
 export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams
-
-  const pkg = searchParams.get("q")
-
-  if (!pkg) {
-    return new Response("No package provided", { status: 400 })
-  }
-
-  const label = searchParams.get("label") ?? "downloads"
-  const labelColor = searchParams.get("labelColor") ?? BADGE_COLORS.default.label
-  const valueColor = searchParams.get("valueColor") ?? BADGE_COLORS.default.value
+  const { pkg, label, labelColor, valueColor } = await handleRequest(request, "downloads", false)
 
   try {
     const response = await client.downloads.total.$get({ name: pkg })

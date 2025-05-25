@@ -2,29 +2,12 @@ import type { NextRequest } from "next/server"
 
 import { BADGE_COLORS, generateBadge } from "@/features/badge/utils/badge"
 import { generateETag } from "@/features/badge/utils/e-tag"
-import { client } from "@/lib/client"
+import { handleRequest } from "@/features/badge/utils/handle-request"
 
 export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams
-
-  const pkg = searchParams.get("q")
-
-  if (!pkg) {
-    return new Response("No package provided", { status: 400 })
-  }
-
-  const label = searchParams.get("label") ?? "license"
-  const labelColor = searchParams.get("labelColor") ?? BADGE_COLORS.default.label
-  const valueColor = searchParams.get("valueColor") ?? BADGE_COLORS.default.value
+  const { pkg, metadata, label, labelColor, valueColor } = await handleRequest(request, "license")
 
   try {
-    const response = await client.package.metadata.$get({ name: pkg })
-
-    if (!response.ok) {
-      throw new Error(`${response.status} ${response.statusText}`)
-    }
-
-    const metadata = await response.json()
     const license = metadata.license ?? "unknown"
 
     const svg = generateBadge({
