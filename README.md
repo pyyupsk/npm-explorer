@@ -1,6 +1,6 @@
 # 🌐 NPM Explorer
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pyyupsk_npm-explorer&metric=alert_status&token=YOUR_TOKEN)](https://sonarcloud.io/dashboard?id=pyyupsk_npm-explorer)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pyyupsk_npm-explorer&metric=alert_status)](https://sonarcloud.io/dashboard?id=pyyupsk_npm-explorer)
 
 A sleek, modern web application for browsing npm package metadata and visualizing download statistics — powered by **Next.js** and **TailwindCSS**.
 
