@@ -1,11 +1,6 @@
 import type { DownloadPeriod } from "@/hooks/use-downloads"
 
-export const DOWNLOAD_PERIODS: DownloadPeriod[] = [
-  "last-day",
-  "last-week",
-  "last-month",
-  "last-year",
-]
+export const DOWNLOAD_PERIODS: DownloadPeriod[] = ["last-week", "last-month", "last-year"]
 
 export const CHART_MARGIN = {
   left: 12,

@@ -3,10 +3,10 @@ import { useState } from "react"
 
 import { client } from "@/lib/client"
 
-export type DownloadPeriod = "last-day" | "last-week" | "last-month" | "last-year"
+export type DownloadPeriod = "last-week" | "last-month" | "last-year"
 
 export function useDownloads(pkg: string) {
-  const [period, setPeriod] = useState<DownloadPeriod>("last-day")
+  const [period, setPeriod] = useState<DownloadPeriod>("last-week")
 
   const {
     data,

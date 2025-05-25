@@ -21,12 +21,6 @@ export const downloadsRouter = j.router({
       const today = new Date()
 
       switch (period) {
-        case "last-day": {
-          const lastDay = new Date(today)
-          lastDay.setDate(today.getDate() - 1)
-          dateRange = `${formatDate(lastDay)}:${formatDate(today)}`
-          break
-        }
         case "last-week": {
           const lastWeek = new Date(today)
           lastWeek.setDate(today.getDate() - 7)

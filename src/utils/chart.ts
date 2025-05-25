@@ -4,8 +4,6 @@ function formatChartDate(dateString: string, period: DownloadPeriod) {
   const date = new Date(dateString)
 
   switch (period) {
-    case "last-day":
-      return date.toLocaleDateString("en-US", { hour: "numeric", minute: "numeric" })
     case "last-week":
       return date.toLocaleDateString("en-US", { weekday: "long" })
     case "last-month":
