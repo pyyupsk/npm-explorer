@@ -43,17 +43,6 @@ export async function GET(request: NextRequest) {
                 textAlign: "center",
               }}
             >
-              {/* TODO: Use logos after getting permission from npm */}
-              {/* <svg
-                id="n"
-                xmlns="http://www.w3.org/2000/svg"
-                width="80"
-                height="80"
-                viewBox="0 0 16 16"
-              >
-                <path fill="#C12127" d="M0,16V0H16V16ZM3,3V13H8V5h3v8h2V3Z" />
-                <path fill="#FFFFFF" d="M3,3H13V13H11V5H8v8H3Z" />
-              </svg> */}
               <h1
                 style={{
                   fontSize: "56px",
@@ -120,18 +109,6 @@ export async function GET(request: NextRequest) {
               alignItems: "center",
             }}
           >
-            {/* TODO: Use logos after getting permission from npm */}
-            {/* <svg
-              id="n"
-              xmlns="http://www.w3.org/2000/svg"
-              width="80"
-              height="80"
-              viewBox="0 0 16 16"
-              marginRight: "24px",
-            >
-              <path fill="#C12127" d="M0,16V0H16V16ZM3,3V13H8V5h3v8h2V3Z" />
-              <path fill="#FFFFFF" d="M3,3H13V13H11V5H8v8H3Z" />
-            </svg> */}
             <h1
               style={{
                 fontSize: "64px",
@@ -325,17 +302,6 @@ export async function GET(request: NextRequest) {
               textAlign: "center",
             }}
           >
-            {/* TODO: Use logos after getting permission from npm */}
-            {/* <svg
-              id="n"
-              xmlns="http://www.w3.org/2000/svg"
-              width="80"
-              height="80"
-              viewBox="0 0 16 16"
-            >
-              <path fill="#C12127" d="M0,16V0H16V16ZM3,3V13H8V5h3v8h2V3Z" />
-              <path fill="#FFFFFF" d="M3,3H13V13H11V5H8v8H3Z" />
-            </svg> */}
             <h1
               style={{
                 fontSize: "56px",
