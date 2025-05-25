@@ -63,22 +63,32 @@ export default async function Page({ searchParams }: PackagePageProps) {
     )
   }
 
-  const metadataRes = await client.package.metadata.$get({ name })
-  const metadata = await metadataRes.json()
+  try {
+    const metadataRes = await client.package.metadata.$get({ name })
+    const metadata = await metadataRes.json()
 
-  if (!metadata || Object.keys(metadata).length === 0) {
+    if (!metadata || Object.keys(metadata).length === 0) {
+      return (
+        <NotFound
+          title="Package not found"
+          description="The package you are looking for does not exist."
+        />
+      )
+    }
+
+    return (
+      <main className="container flex min-h-[calc(100vh-65px)] flex-col gap-6 py-9">
+        <MetadataCard metadata={metadata} />
+        <DownloadStatistics pkg={name} />
+      </main>
+    )
+  } catch (error) {
+    console.error(`Error fetching package ${name}:`, error)
     return (
       <NotFound
-        title="Package not found"
-        description="The package you are looking for does not exist."
+        title="Server Error"
+        description="Unable to fetch package data. Please try again later."
       />
     )
   }
-
-  return (
-    <main className="container flex min-h-[calc(100vh-65px)] flex-col gap-6 py-9">
-      <MetadataCard metadata={metadata} />
-      <DownloadStatistics pkg={name} />
-    </main>
-  )
 }
